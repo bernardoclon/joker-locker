@@ -60,8 +60,8 @@
     ],
     "packs": [],
     "url": "https://github.com/bernardoclon/jocker-loker",
-    "manifest": "https://raw.githubusercontent.com/bernardoclon/jocker-loker/refs/heads/main/module.json",
-    "download": "https://github.com/bernardoclon/jocker-loker/releases/download/v0.1.0.zip",
+    "manifest": "https://raw.githubusercontent.com/bernardoclon/joker-locker/refs/heads/main/module.json",
+    "download": "https://github.com/bernardoclon/joker-locker/archive/refs/tags/V1-0.zip",
     "bugs": "https://github.com/bernardoclon/jocker-loker/issues",
     "readme": "https://github.com/bernardoclon/jocker-loker/blob/main/README.md",
     "flags": {
