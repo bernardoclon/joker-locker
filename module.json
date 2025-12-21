@@ -60,7 +60,7 @@
     ],
     "packs": [],
     "url": "https://github.com/bernardoclon/jocker-loker",
-    "manifest": "https://github.com/bernardoclon/jocker-loker/releases/latest/download/module.json",
+    "manifest": "https://raw.githubusercontent.com/bernardoclon/jocker-loker/refs/heads/main/module.json",
     "download": "https://github.com/bernardoclon/jocker-loker/releases/download/v0.1.0/module.zip",
     "bugs": "https://github.com/bernardoclon/jocker-loker/issues",
     "readme": "https://github.com/bernardoclon/jocker-loker/blob/main/README.md",
