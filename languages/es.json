@@ -1,0 +1,405 @@
+{
+    "joker-locker": {
+        "settings": {},
+        "general-lock-config": {
+            "header-buttons": {
+                "copyContentLink": "Copiar Enlace de Contenido",
+                "unlock": "Abrir Puzzle"
+            },
+            "title": "Configuración General de Bloqueo",
+            "permissionWarning": "La propiedad predeterminada de este documento no está configurada en 'Ninguna'. Los jugadores podrían eludir el bloqueo bajo ciertas circunstancias. Se recomienda configurar la propiedad predeterminada en 'Ninguna'.",
+            "fixPermission": "Corregir Propiedad",
+            "label": {
+                "label": "Etiqueta",
+                "placeholder": "Sistema de seguridad de puerta"
+            },
+            "description": {
+                "label": "Descripción",
+                "placeholder": "Este es un sistema de seguridad para la puerta."
+            },
+            "unlocked": {
+                "label": "Desbloqueado"
+            },
+            "attempts": {
+                "label": "Intentos",
+                "notes": "Número de intentos permitidos, establece en -1 para ilimitados."
+            },
+            "lockType": {
+                "label": "Tipo de Bloqueo",
+                "configure": "Configurar",
+                "none": "Ninguno (Deshabilitado)",
+                "optgroupContext": "Requiere Contexto",
+                "optgroupNoContext": "Sin Contexto Requerido",
+                "notes": "El tipo de bloqueo que se utilizará para asegurar el documento. Algunos bloqueos requieren contexto para resolverse, mientras que otros pueden resolverse sin información externa."
+            },
+            "unlockSound": {
+                "label": "Sonido de Desbloqueo"
+            },
+            "interactionSound": {
+                "label": "Sonido de Interacción"
+            },
+            "backgroundImage": {
+                "label": "Imagen de Fondo"
+            },
+            "glow": {
+                "label": "Efecto de Brillo",
+                "notes": "Habilitar efectos de brillo/sombra en bordes y texto, esto hará que el tema sea más adecuado para configuraciones de ciencia ficción."
+            },
+            "textColor": {
+                "label": "Color de Texto"
+            },
+            "primaryColor": {
+                "label": "Color Primario",
+                "notes": "Algunos tipos de bloqueo pueden no usar este color. Dejar vacío para usar el color predeterminado del bloqueo."
+            },
+            "secondaryColor": {
+                "label": "Color Secundario",
+                "notes": "Algunos tipos de bloqueo pueden no usar este color. Dejar vacío para usar el color predeterminado del bloqueo."
+            },
+            "primaryFont": {
+                "label": "Fuente Primaria"
+            },
+            "secondaryFont": {
+                "label": "Fuente Secundaria",
+                "notes": "Algunos tipos de bloqueo pueden no usar esta fuente."
+            },
+            "font": {
+                "inherit": "Heredar"
+            },
+            "unlockMacro": {
+                "label": "Macro de Desbloqueo",
+                "notes": "Macro a ejecutar cuando se desbloquee el bloqueo. Dentro de la macro puedes acceder a 'object' para obtener el documento desbloqueado y 'user' para obtener el usuario que lo desbloqueó."
+            },
+            "permission": {
+                "label": "Permisos al Desbloquear",
+                "notes": "Determina qué nivel de permiso obtiene un jugador en el documento cuando lo desbloquea, y si dar ese permiso solo al jugador que lo desbloqueó o a todos los jugadores. Si el documento es una Puerta, esta configuración será ignorada y la puerta se desbloqueará.",
+                "noChange": "Sin Cambios",
+                "all": "Todos los Jugadores",
+                "unlocking": "Jugador Desbloqueando"
+            }
+        },
+        "number-lock": {
+            "name": "Número/Glifo",
+            "description": "Un bloqueo en estilo de código PIN. El jugador debe ingresar el código correcto para desbloquear el documento. Puedes reemplazar los números con glifos o imágenes para un bloqueo más temático.",
+            "playerInfo": "Dado que esto no es un puzzle, el GM necesitará proporcionar pistas o instrucciones a los jugadores para ingresar el código correcto.",
+            "code": {
+                "label": "Código"
+            },
+            "keypad": {
+                "label": "Teclado"
+            }
+        },
+        "password-lock": {
+            "name": "Contraseña",
+            "description": "Un bloqueo simple de contraseña. El jugador debe ingresar la contraseña correcta para desbloquear el documento.",
+            "playerInfo": "Dado que esto no es un puzzle, el GM necesitará proporcionar pistas o instrucciones a los jugadores para ingresar la contraseña correcta.",
+            "password": {
+                "label": "Contraseña",
+                "placeholder": "c0ntr4s3ñ4"
+            }
+        },
+        "item-lock": {
+            "name": "Objeto",
+            "description": "Un bloqueo que requiere que el jugador arrastre y suelte uno o más objetos en las ranuras correctas para desbloquear el documento.",
+            "playerInfo": "Para resolver este puzzle, puedes proporcionar pistas de contexto a los jugadores para saber qué objetos van dónde, o usar imágenes específicas para las ranuras que proporcionen la información necesaria para adivinar los objetos correctos.",
+            "item": {
+                "label": "Nombre del Objeto"
+            },
+            "itemImage": {
+                "label": "Imagen de Ranura"
+            },
+            "deleteItems": {
+                "label": "Eliminar Objetos",
+                "notes": "Si está marcado, los objetos serán eliminados del inventario del jugador cuando se desbloquee el bloqueo."
+            }
+        },
+        "switches-lock": {
+            "name": "Interruptores",
+            "description": "Un bloqueo que requiere que el jugador configure un conjunto de interruptores binarios en la posición correcta para desbloquear el documento.",
+            "playerInfo": "Dado que esto no es un puzzle, el GM necesitará proporcionar pistas o instrucciones a los jugadores para configurar los interruptores correctamente.",
+            "switchesSolution": {
+                "label": "Configuración de Interruptores",
+                "notes": "La solución y configuración de los interruptores en el formato '0110'. Cada dígito representa un interruptor, 0 es apagado y 1 es encendido. Puedes tener tantos interruptores como quieras."
+            },
+            "showSwitches": {
+                "label": "Mostrar Interruptores",
+                "notes": "Si mostrar los botones de interruptor. Si está deshabilitado, solo se mostrarán las luces de estado encendido/apagado."
+            }
+        },
+        "cryptex-lock": {
+            "name": "Criptex",
+            "description": "Un bloqueo que requiere que el jugador rote un conjunto de cilindros a la posición correcta para formar la solución. Se pueden usar emojis o glifos para representar los caracteres en los cilindros. Diferentes cilindros pueden tener diferentes conjuntos de caracteres.",
+            "playerInfo": "Para resolver este puzzle, puedes dar pistas de contexto externo a los jugadores para conocer algunos o todos los caracteres, o limitando la cantidad de caracteres por cilindro, los jugadores pueden adivinar la solución por prueba y error.",
+            "solution": {
+                "label": "Solución"
+            },
+            "cylinder": {
+                "label": "Cilindro",
+                "notes": "El cilindro que usa el criptex. Cada carácter del cilindro debe estar separado por una coma."
+            },
+            "glyphs": {
+                "label": "Glifos",
+                "notes": "Los glifos que se pueden usar en el criptex. Cada glifo debe estar separado por una coma."
+            }
+        },
+        "celtic-lock": {
+            "name": "Runas Celtas",
+            "description": "Un puzzle estilo Cryptex que utiliza runas celtas. Rota los cilindros para formar la palabra rúnica correcta.",
+            "playerInfo": "Alinea las runas correctas en la fila central para desbloquear.",
+            "title": "Criptex Celta",
+            "solution": {
+                "label": "Solución"
+            },
+            "cylinder": {
+                "label": "Cilindro"
+            }
+        },
+        "sudoku-lock": {
+            "name": "Sudoku",
+            "description": "Un bloqueo que requiere que el jugador resuelva un puzzle de sudoku para desbloquear el documento. Los números predeterminados pueden ser reemplazados con imágenes o glifos para un bloqueo más temático.",
+            "playerInfo": "Para resolver este puzzle, los jugadores necesitarán conocimiento meta de las reglas del sudoku, o puedes proporcionarles una pista o instrucciones sobre cómo resolverlo.",
+            "generate": "Generar Sudoku",
+            "difficulty": {
+                "label": "Dificultad"
+            },
+            "grid": {
+                "label": "Cuadrícula",
+                "4": "4x4",
+                "9": "9x9"
+            },
+            "sudoku": {
+                "label": "Sudoku"
+            },
+            "key": {
+                "label": "Clave"
+            }
+        },
+        "image-wheel": {
+            "name": "Rueda de Imagen",
+            "description": "Un bloqueo que requiere que el jugador rote un conjunto de anillos concéntricos a la posición correcta para alinear la imagen.",
+            "playerInfo": "No se necesita contexto externo para resolver este puzzle, los jugadores pueden simplemente rotar las ruedas hasta que la imagen esté alineada.",
+            "image": {
+                "label": "Imagen"
+            },
+            "wheelCount": {
+                "label": "Número de Ruedas"
+            },
+            "angleStep": {
+                "label": "Paso de Ángulo"
+            },
+            "fixed": {
+                "label": "Rueda Fija",
+                "notes": "La rueda que no debe rotarse. Donde 1 es la rueda más externa."
+            }
+        },
+        "mastermind-lock": {
+            "name": "Mastermind",
+            "description": "Un bloqueo que requiere que el jugador adivine la combinación correcta de colores o letras para desbloquear el documento. Cada vez que los jugadores intentan desbloquear, recibirán retroalimentación sobre cuántos colores o letras son correctos y en la posición correcta. Verde indica un color correcto y posición, amarillo indica un color correcto pero posición incorrecta, y rojo indica un color incorrecto.",
+            "playerInfo": "Para resolver este puzzle, los jugadores pueden usar la retroalimentación de intentos previos para hacer conjeturas educadas sobre la combinación correcta. Aunque el conocimiento meta no es estrictamente requerido, puede ayudar a los jugadores a hacer conjeturas más informadas.",
+            "reset": "Reiniciar",
+            "solution": {
+                "label": "Solución",
+                "notes": "La solución al bloqueo mastermind. Cada color o letra debe estar separado por una coma. Puedes usar colores CSS como 'red' o códigos hex como '#ff0000'."
+            },
+            "pipOptions": {
+                "label": "Clavos",
+                "notes": "Los colores o letras que el jugador puede usar para adivinar la solución. Cada color o letra debe estar separado por una coma. Puedes usar colores CSS como 'red' o códigos hex como '#ff0000'."
+            }
+        },
+        "fill-blanks-lock": {
+            "name": "Rellenar los Espacios",
+            "description": "Un bloqueo que requiere que el jugador rellene los espacios en blanco en un texto para desbloquear el documento. El jugador debe ingresar los caracteres correctos en el orden correcto.",
+            "playerInfo": "Para resolver este puzzle, los jugadores pueden usar el contexto del puzzle para rellenar los espacios. También puedes proporcionarles pistas o instrucciones sobre cómo resolverlo.",
+            "solution": {
+                "label": "Solución",
+                "notes": "La solución al bloqueo de rellenar espacios. Debe ser el texto completo con los espacios rellenados.",
+                "placeholder": "El rápido zorro marrón salta sobre el perro perezoso."
+            },
+            "text": {
+                "label": "Texto",
+                "notes": "El texto con los espacios que el jugador debe rellenar. Usa guiones bajos para representar los espacios.",
+                "placeholder": "El _____ zorro marrón salta ____ el ____ perro."
+            },
+            "caseSensitive": {
+                "label": "Sensible a Mayúsculas"
+            }
+        },
+        "mosaic-lock": {
+            "name": "Mosaico",
+            "description": "Un bloqueo que requiere que el jugador complete un puzzle de mosaico para desbloquear el documento. El jugador debe hacer clic en las baldosas para rotarlas y completar la imagen.",
+            "playerInfo": "No se necesita contexto externo para resolver este puzzle, los jugadores pueden simplemente rotar las baldosas hasta que la imagen esté completa.",
+            "mosaicImage": {
+                "label": "Imagen de Mosaico",
+                "notes": "La imagen que el jugador debe completar. Se recomienda usar una imagen cuadrada para mejores resultados."
+            },
+            "mosaicSize": {
+                "label": "Tamaño de Mosaico",
+                "notes": "El número de filas y columnas en el mosaico."
+            }
+        },
+        "sound-lock": {
+            "name": "Melodía",
+            "description": "Un bloqueo que requiere que el jugador escuche una melodía e ingrese la secuencia correcta de notas para desbloquear el documento.",
+            "playerInfo": "Aunque no se necesita contexto externo para resolver este puzzle, los jugadores necesitarán tener buen oído para la música para resolverlo. Los jugadores más familiarizados con la teoría musical tendrán más facilidad para resolver este puzzle.",
+            "sequence": {
+                "label": "Secuencia",
+                "notes": "La secuencia de notas que el jugador debe ingresar para desbloquear el documento. Cada nota debe estar separada por una coma. Puedes usar las siguientes notas: C, C#, D, D#, E, F, F#, G, G#, A, A#, B. También puedes usar la siguiente notación para aumentar o disminuir la octava: +C, -C, ++A, --B. Para establecer una duración personalizada por nota (en milisegundos) puedes usar la siguiente notación: C500, D#1000."
+            },
+            "chordDuration": {
+                "label": "Duración",
+                "notes": "La duración de cada nota en milisegundos."
+            },
+            "pauseBetweenNotes": {
+                "label": "Pausa Entre Notas",
+                "notes": "La duración de la pausa entre cada nota en milisegundos."
+            }
+        },
+        "fifteen-lock": {
+            "name": "Baldosas Deslizantes",
+            "description": "Un bloqueo que requiere que el jugador resuelva un puzzle deslizante para desbloquear el documento. El jugador debe deslizar las baldosas para formar la imagen correcta. La baldosa vacía necesita estar en la esquina inferior derecha para desbloquear el documento.",
+            "playerInfo": "No se necesita contexto externo para resolver este puzzle, los jugadores pueden simplemente deslizar las baldosas hasta que la imagen esté completa.",
+            "shuffleDialog": "Movimientos aleatorios:",
+            "image": {
+                "label": "Imagen",
+                "notes": "La imagen que el jugador debe formar deslizando las baldosas. Se recomienda usar una imagen cuadrada para mejores resultados."
+            },
+            "size": {
+                "label": "Cuadrícula",
+                "notes": "El número de filas y columnas en el puzzle deslizante."
+            }
+        },
+        "four-by-four-lock": {
+            "name": "Peones y Estrellas",
+            "description": "Un bloqueo que requiere que el jugador coloque peones en una cuadrícula para formar un patrón específico. Ciertas celdas contienen estrellas que deben ser cubiertas por peones, la cantidad de estrellas que necesitan ser cubiertas se especifica a continuación y depende del tamaño de la cuadrícula. Cada fila y columna debe contener exactamente el número de peones indicado en los encabezados de columna o fila.",
+            "playerInfo": "Si las Estrellas están habilitadas, los jugadores necesitarán una pista para saber cuántas estrellas necesitan cubrir. De lo contrario, es posible resolver el puzzle sin información externa.",
+            "pawnImage": {
+                "label": "Imagen de Peón",
+                "notes": "La imagen que representa los peones."
+            },
+            "starImage": {
+                "label": "Imagen de Estrella",
+                "notes": "La imagen que representa las estrellas."
+            },
+            "noStars": {
+                "label": "Ignorar Estrellas",
+                "notes": "Si está marcado, las estrellas serán removidas y el jugador solo necesita colocar los peones en las posiciones correctas."
+            },
+            "gridSize": {
+                "label": "Tamaño de Cuadrícula",
+                "notes": "El número de filas y columnas en la cuadrícula."
+            },
+            "generate": "Generar Puzzle",
+            "puzzleGrid": {
+                "label": "Cuadrícula de Puzzle",
+                "notes": "La cuadrícula de puzzle. Por favor sigue la sintaxis de un puzzle generado si quieres crear el tuyo propio. Esto muestra el estado resuelto, donde 0 es una celda vacía, 1 es un peón, y 2 es una estrella y 3 es un peón en una estrella."
+            },
+            "pawnNumber": "Peones a colocar",
+            "starNumber": "Estrellas a cubrir"
+        },
+        "match-lock": {
+            "name": "Coincidencia de Palabra/Imagen",
+            "description": "Un bloqueo que requiere que el jugador coincida palabras para desbloquear el documento. Si se establece una palabra secreta, las letras incorrectas serán tachadas y las letras restantes formarán la palabra secreta. En este caso, los jugadores deben ingresar la palabra secreta para desbloquear el documento.",
+            "playerInfo": "Para resolver este puzzle, los jugadores pueden usar el contexto del puzzle para coincidir las palabras. También puedes proporcionarles pistas o instrucciones sobre cómo resolverlo.",
+            "enterSecretWord": "Ingresa la palabra secreta.",
+            "matchTable": {
+                "label": "Tabla de Coincidencia",
+                "notes": "La tabla que contiene las palabras a coincidir, también puedes usar rutas de imagen en lugar de palabras. La primera columna son las palabras a coincidir, la segunda columna son las palabras con las que coincidir. Cada par de palabras debe estar separado por un '|' (barra vertical).\nLa columna izquierda se mostrará como está escrita, la columna derecha será barajada."
+            },
+            "secretWord": {
+                "label": "Palabra Secreta",
+                "notes": "Si se establece, letras aleatorias serán esparcidas alrededor del área central del puzzle, una vez que el jugador haya coincidido las palabras correctamente, las letras incorrectas serán tachadas y las letras restantes formarán la palabra secreta."
+            },
+            "dictionary": {
+                "label": "Diccionario",
+                "notes": "El diccionario que se usará para las letras aleatorias."
+            }
+        },
+        "pick-lock": {
+            "name": "Forzar Cerradura",
+            "description": "Un sistema de forzado de cerraduras rotatorio. El jugador debe encontrar el ángulo correcto para cada pin y aplicar la tensión necesaria para fijarlos.",
+            "playerInfo": "Usa los controles para rotar la cerradura y buscar el ángulo correcto (punto dulce) de cada pin. Aumenta la tensión con la barra para intentar fijarlo; si el ángulo es incorrecto, la tensión se reiniciará.",
+            "title": "Forzar Cerradura",
+            "numPins": {
+                "label": "Número de Pines"
+            },
+            "pinAngle": {
+                "label": "Ángulo del Pin {number}"
+            },
+            "feedbackRange": {
+                "label": "Rango de Pista"
+            },
+            "pin": "Pin",
+            "pinConfig": {
+                "angle": "Ángulo",
+                "minTension": "T. Mín",
+                "maxTension": "T. Máx"
+            }
+        },
+        "f-cerradura-2": {
+            "name": "Forzar Cerradura 2",
+            "description": "Un sistema de forzado de cerraduras de pernos. Debes levantar cada perno a su altura correcta y ajustar la tensión adecuada.",
+            "playerInfo": "Selecciona un pin y levántalo hasta encontrar su posición de fijación. Ajusta la tensión en el nivel adecuado, cuando todos los pines esten en su lugar correcto para desbloquear el cerrojo.",
+            "title": "Forzar Cerradura 2",
+            "numPins": {
+                "label": "Número de Pines"
+            },
+            "pinHeight": {
+                "label": "Altura del Pin {number}"
+            },
+            "tensionMin": {
+                "label": "Tensión Mínima"
+            },
+            "feedbackRange": {
+                "label": "Rango de Pista"
+            },
+            "tensionMax": {
+                "label": "Tensión Máxima"
+            }
+        },
+        "jingle-bells-lock": {
+            "name": "Campanas Musicales",
+            "description": "Un bloqueo que requiere tocar una secuencia de notas en el orden correcto para desbloquear.",
+            "playerInfo": "Escucha atentamente o sigue las pistas para tocar la melodía correcta.",
+            "sequence": {
+                "label": "Secuencia de Solución",
+                "notes": "Nombres de las notas separados por comas (ej. Do, Mi, Re). No distingue mayúsculas."
+            },
+            "instrument": {
+                "label": "Instrumento",
+                "bell": "Campana",
+                "piano": "Piano",
+                "flute": "Flauta",
+                "christmas-bell": "Campanas Navideñas"
+            }
+        },
+        "flags": {},
+        "attempts": "Intentos Restantes",
+        "headerConfig": "Joker Locker",
+        "unlocked": "Desbloqueado",
+        "how-to": "¿Cómo funciona esto?",
+        "how-to-player": "Instrucciones para Jugadores",
+        "chatMessage": "está intentando desbloquear",
+        "sidebar-buttons": {
+            "unlock": "Intentar Desbloquear",
+            "configure": "Configurar Bloqueo",
+            "shareToChat": "Compartir en Chat",
+            "zoomPlus": "Acercar",
+            "zoomMinus": "Alejar",
+            "shuffle": "Barajar Puzzle",
+            "close": "Cerrar"
+        },
+        "notifications": {
+            "noLock": "No se ha establecido un bloqueo en este documento.",
+            "alreadyUnlocked": "Este documento ya está desbloqueado.",
+            "noLockSelected": "No se ha seleccionado un tipo de bloqueo.",
+            "unlocked": "Desbloqueado.",
+            "noGM": "Se requiere un GM para desbloquear este documento.",
+            "failedAttempt": "Fallo al desbloquear.",
+            "contentLinkCopied": "Enlace de contenido copiado al portapapeles.",
+            "locked": "Este documento está bloqueado. Como GM puedes abrirlo normalmente.",
+            "resetSuccess": "Puzzle reiniciado exitosamente.",
+            "ownershipFixed": "Propiedad Predeterminada configurada en 'Ninguna'.",
+            "noAttempts": "No te quedan intentos."
+        }
+    }
+}

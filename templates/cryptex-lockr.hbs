@@ -1,0 +1,22 @@
+<div id="cryptex-lock">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <input type="text" name="selectedSolution" id="" value="{{selectedSolution}}">
+    <div class="cryptex-container">
+        <div class="arrow-left">
+            <i class="fa-solid fa-caret-right"></i>
+        </div>
+        {{#each cylinderDisplay as |cylinder|}}
+
+        <div class="cylinder">
+            {{#each cylinder as |symbol|}}
+            <div class="symbol">{{{symbol}}}</div>
+            {{/each}}
+        </div>
+
+        {{/each}}
+        <div class="arrow-right">
+            <i class="fa-solid fa-caret-left"></i>
+        </div>
+    </div>
+</div>

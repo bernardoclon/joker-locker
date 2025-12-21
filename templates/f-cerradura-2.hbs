@@ -1,0 +1,23 @@
+<div id="f-cerradura-2">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <p>Ajusta cada barra a la altura correcta y la tensión para desbloquear.</p>
+    <div class="pins-container">
+        {{#each pins}}
+        <div class="pin-wrapper">
+            <div class="pin-info">
+                <span>Pin {{this.number}}</span>
+                <br>
+                <span>{{this.currentHeight}}</span>
+            </div>
+            <div class="pin-bar-container" data-index="{{@index}}" data-target="{{this.height}}" style="position: relative;">
+                <div class="pin-fill" style="bottom: clamp(0px, calc({{this.currentHeightPercent}} - 10px), calc(100% - 20px)); height: 20px; width: 100%; position: absolute; background: linear-gradient(90deg, #777, #ccc, #777); border-radius: 3px; box-shadow: 0 2px 3px rgba(0,0,0,0.5);"></div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="tension-container">
+        <label for="tension">Tensión:</label>
+        <input type="range" id="tension" class="tension-bar" min="0" max="100" value="{{currentTension}}">
+    </div>
+</div>

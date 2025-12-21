@@ -1,0 +1,27 @@
+<div id="match-lock">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <div class="match-table">
+        <div class="letters-container">
+            {{#each lettersDisplay as |letter|}}
+            <span style="left: {{letter.position.x}}%;top: {{letter.position.y}}%">{{{letter.value}}}</span>
+            {{/each}}
+        </div>
+        <div class="svg-container"></div>
+        <div class="match-col-left">
+            {{#each displayTable as |pair|}}
+            <span class="pair-word {{#if pair.word.isImage}}is-image{{/if}}" style="{{#if pair.word.isImage}}background-image: url('{{pair.word.text}}');{{/if}}" data-matched-to="{{pair.word.matchedTo}}" data-index="{{pair.word.index}}">
+                {{#unless pair.word.isImage}}{{{pair.word.text}}}{{/unless}}
+            </span>
+            {{/each}}
+        </div>
+        <div class="match-col-right">
+            {{#each displayTable as |pair|}}
+            <span class="pair-match {{#if pair.match.isImage}}is-image{{/if}}" style="{{#if pair.match.isImage}}background-image: url('{{pair.match.text}}');{{/if}}order: {{pair.match.order}};" data-index="{{pair.match.index}}">
+                {{#unless pair.match.isImage}}{{{pair.match.text}}}{{/unless}}
+            </span>
+            {{/each}}
+        </div>
+    </div>
+    {{#if secretWord}}<input type="text" placeholder="{{localize "joker-locker.match-lock.enterSecretWord"}}" name="currentSecretWord" id="" value="{{currentSecretWord}}"> {{/if}}
+</div>
