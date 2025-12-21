@@ -12,7 +12,7 @@ export class FCerradura2 extends BasePuzzleLock {
     }
 
     get formConfiguration() {
-        const state = this.document.getFlag(MODULE_ID, this.APP_ID) || this.constructor.defaultState;
+        const state = this.document.getFlag(MODULE_ID, this.APP_ID) || {};
         const numPins = state.numPins || 5;
         const inputs = [
             {
@@ -37,7 +37,7 @@ export class FCerradura2 extends BasePuzzleLock {
                 name: "tensionMin",
                 type: "number",
                 label: game.i18n.localize(`${MODULE_ID}.${this.APP_ID}.tensionMin.label`),
-                value: state.tensionMin !== undefined ? state.tensionMin : 40,
+                value: state.tensionMin !== undefined ? state.tensionMin : 0,
                 min: 0,
                 max: 100,
                 step: 1,
@@ -46,7 +46,7 @@ export class FCerradura2 extends BasePuzzleLock {
                 name: "tensionMax",
                 type: "number",
                 label: game.i18n.localize(`${MODULE_ID}.${this.APP_ID}.tensionMax.label`),
-                value: state.tensionMax !== undefined ? state.tensionMax : 60,
+                value: state.tensionMax !== undefined ? state.tensionMax : 0,
                 min: 0,
                 max: 100,
                 step: 1,
@@ -56,7 +56,7 @@ export class FCerradura2 extends BasePuzzleLock {
         // Configurar altura de cada pin
         for (let i = 1; i <= numPins; i++) {
             const pinKey = `pin${i}Height`;
-            const defaultHeight = state[pinKey] !== undefined ? state[pinKey] : 30 + i * 5;
+            const defaultHeight = state[pinKey] !== undefined ? state[pinKey] : 0;
             inputs.push({
                 name: pinKey,
                 type: "number",
@@ -80,13 +80,6 @@ export class FCerradura2 extends BasePuzzleLock {
             pins: [],
             currentTension: 0,
             numPins: 5,
-            tensionMin: 40,
-            tensionMax: 60,
-            pin1Height: 30,
-            pin2Height: 40,
-            pin3Height: 50,
-            pin4Height: 35,
-            pin5Height: 45,
         };
     }
 
@@ -113,8 +106,8 @@ export class FCerradura2 extends BasePuzzleLock {
         const feedbackRange = state.feedbackRange || 20;
 
         // Asegurar valores por defecto para compatibilidad con datos existentes
-        if (state.tensionMin === undefined) state.tensionMin = 40;
-        if (state.tensionMax === undefined) state.tensionMax = 60;
+        if (state.tensionMin === undefined) state.tensionMin = 0;
+        if (state.tensionMax === undefined) state.tensionMax = 0;
         if (state.currentTension === undefined) state.currentTension = 0;
 
         if (!state.pins || state.pins.length !== numPins) {
@@ -128,7 +121,7 @@ export class FCerradura2 extends BasePuzzleLock {
         }
 
         for (let i = 1; i <= numPins; i++) {
-            const height = state[`pin${i}Height`] !== undefined ? state[`pin${i}Height`] : 30 + i * 5;
+            const height = state[`pin${i}Height`] !== undefined ? state[`pin${i}Height`] : 0;
             if (state.pins[i - 1]) state.pins[i - 1].height = height;
             if (state.pins[i - 1]) state.pins[i - 1].set = state.pins[i - 1].currentHeight === height;
 

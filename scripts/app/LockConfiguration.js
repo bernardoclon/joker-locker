@@ -70,8 +70,10 @@ export class LockConfiguration extends FormApplication {
                 let newNumPins = parseInt(e.target.value);
                 newNumPins = Math.max(1, Math.min(10, newNumPins));
                 e.target.value = newNumPins;
-                const currentFlag = this.document.getFlag(MODULE_ID, this.formConfigType) || {};
-                await this.document.setFlag(MODULE_ID, this.formConfigType, { ...currentFlag, numPins: newNumPins });
+                
+                const formData = new FormDataExtended(this.form).object;
+                formData.numPins = newNumPins;
+                await this.document.setFlag(MODULE_ID, this.formConfigType, formData);
                 // Re-render so dynamically generated pin inputs appear/disappear
                 this.render(true, { height: 'auto' });
                 setTimeout(() => this.setPosition({ height: 'auto' }), 50);

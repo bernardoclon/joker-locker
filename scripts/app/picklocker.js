@@ -11,7 +11,7 @@ export class PickLock extends BasePuzzleLock {
     }
 
     get formConfiguration() {
-        const state = this.document.getFlag(MODULE_ID, this.APP_ID) || this.constructor.defaultState;
+        const state = this.document.getFlag(MODULE_ID, this.APP_ID) || {};
         const numPins = state.numPins || 5;
         const inputs = [
             {
@@ -37,11 +37,11 @@ export class PickLock extends BasePuzzleLock {
         // Add per-pin angle inputs so GMs can configure each pin's sweet spot.
         for (let i = 1; i <= numPins; i++) {
             const pinKey = `pin${i}`;
-            const defaultAngle = state[pinKey] !== undefined ? state[pinKey] : ((i - 1) * (360 / numPins));
+            const defaultAngle = state[pinKey] !== undefined ? state[pinKey] : 0;
             const minKey = `pin${i}TensionMin`;
             const maxKey = `pin${i}TensionMax`;
-            const defaultMin = state[minKey] !== undefined ? state[minKey] : (state.tensionMin !== undefined ? state.tensionMin : 40);
-            const defaultMax = state[maxKey] !== undefined ? state[maxKey] : (state.tensionMax !== undefined ? state.tensionMax : 60);
+            const defaultMin = state[minKey] !== undefined ? state[minKey] : (state.tensionMin !== undefined ? state.tensionMin : 0);
+            const defaultMax = state[maxKey] !== undefined ? state[maxKey] : (state.tensionMax !== undefined ? state.tensionMax : 0);
 
             inputs.push({
                 name: `pin${i}Config`,
@@ -78,11 +78,6 @@ export class PickLock extends BasePuzzleLock {
             currentAngle: 0,
             currentTension: 0,
             numPins: 5,
-            pin1: 30,
-            pin2: 60,
-            pin3: 90,
-            pin4: 120,
-            pin5: 150,
         };
     }
 
@@ -101,10 +96,10 @@ export class PickLock extends BasePuzzleLock {
         for (let i = 1; i <= numPins; i++) {
             const angle = state[`pin${i}`] !== undefined
                 ? state[`pin${i}`]
-                : ((i - 1) * (360 / numPins));
+                : 0;
 
-            const tMin = state[`pin${i}TensionMin`] !== undefined ? state[`pin${i}TensionMin`] : (state.tensionMin || 40);
-            const tMax = state[`pin${i}TensionMax`] !== undefined ? state[`pin${i}TensionMax`] : (state.tensionMax || 60);
+            const tMin = state[`pin${i}TensionMin`] !== undefined ? state[`pin${i}TensionMin`] : (state.tensionMin || 0);
+            const tMax = state[`pin${i}TensionMax`] !== undefined ? state[`pin${i}TensionMax`] : (state.tensionMax || 0);
 
             // Intentar preservar el offset si el rango no ha cambiado
             let offset;
