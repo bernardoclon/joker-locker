@@ -2,7 +2,7 @@
     "id": "joker-locker",
     "title": "Joker Locker",
     "description": "Oculta/asegura Actors, Items y JournalEntries hasta que se desbloquean.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "compatibility": {
         "minimum": 13,
         "verified": "13"
@@ -61,7 +61,7 @@
     "packs": [],
     "url": "https://github.com/bernardoclon/jocker-loker",
     "manifest": "https://raw.githubusercontent.com/bernardoclon/joker-locker/refs/heads/main/module.json",
-    "download": "https://github.com/bernardoclon/joker-locker/archive/refs/tags/V1-0.zip",
+    "download": "https://github.com/bernardoclon/joker-locker/archive/refs/tags/V1-1.zip",
     "bugs": "https://github.com/bernardoclon/jocker-loker/issues",
     "readme": "https://github.com/bernardoclon/jocker-loker/blob/main/README.md",
     "flags": {

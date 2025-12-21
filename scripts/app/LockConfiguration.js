@@ -80,7 +80,14 @@ export class LockConfiguration extends FormApplication {
         const tensionMinInput = html.querySelector('input[name="tensionMin"]');
         if (tensionMinInput) {
             tensionMinInput.addEventListener('change', async (e) => {
-                const newTensionMin = parseInt(e.target.value);
+                let newTensionMin = parseInt(e.target.value);
+                if (this.formConfigType === "f-cerradura-2" || this.formConfigType === "pick-lock") {
+                    if (isNaN(newTensionMin)) newTensionMin = 0;
+                    const min = tensionMinInput.min !== "" ? parseInt(tensionMinInput.min) : -Infinity;
+                    const max = tensionMinInput.max !== "" ? parseInt(tensionMinInput.max) : Infinity;
+                    newTensionMin = Math.max(min, Math.min(max, newTensionMin));
+                    e.target.value = newTensionMin;
+                }
                 const currentFlag = this.document.getFlag(MODULE_ID, this.formConfigType) || {};
                 await this.document.setFlag(MODULE_ID, this.formConfigType, { ...currentFlag, tensionMin: newTensionMin });
             });
@@ -88,7 +95,14 @@ export class LockConfiguration extends FormApplication {
         const tensionMaxInput = html.querySelector('input[name="tensionMax"]');
         if (tensionMaxInput) {
             tensionMaxInput.addEventListener('change', async (e) => {
-                const newTensionMax = parseInt(e.target.value);
+                let newTensionMax = parseInt(e.target.value);
+                if (this.formConfigType === "f-cerradura-2" || this.formConfigType === "pick-lock") {
+                    if (isNaN(newTensionMax)) newTensionMax = 0;
+                    const min = tensionMaxInput.min !== "" ? parseInt(tensionMaxInput.min) : -Infinity;
+                    const max = tensionMaxInput.max !== "" ? parseInt(tensionMaxInput.max) : Infinity;
+                    newTensionMax = Math.max(min, Math.min(max, newTensionMax));
+                    e.target.value = newTensionMax;
+                }
                 const currentFlag = this.document.getFlag(MODULE_ID, this.formConfigType) || {};
                 await this.document.setFlag(MODULE_ID, this.formConfigType, { ...currentFlag, tensionMax: newTensionMax });
             });
@@ -110,6 +124,7 @@ export class LockConfiguration extends FormApplication {
         if (this.formConfigType === "f-cerradura-2" || this.formConfigType === "pick-lock") {
             html.querySelectorAll('input[name^="pin"][type="number"]').forEach(input => {
                 input.addEventListener('change', (e) => {
+                    if (input.name.toLowerCase().includes("tension")) return;
                     let val = parseInt(e.target.value);
                     if (isNaN(val)) val = 0;
                     const min = input.min !== "" ? parseInt(input.min) : -Infinity;

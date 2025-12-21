@@ -1004,10 +1004,17 @@
 }
 
 /* F Cerradura 2 Styles */
+.puzzle-lock #f-cerradura-2 {
+  max-width: unset;
+}
+
 #f-cerradura-2 .pins-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 20px 0;
+  flex-wrap: nowrap;
+  width: max-content;
+  min-width: 100%;
 }
 
 #f-cerradura-2 .pin-wrapper {
@@ -1021,6 +1028,7 @@
   text-align: center;
   margin-bottom: 10px;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 #f-cerradura-2 .pin-bar-container {
