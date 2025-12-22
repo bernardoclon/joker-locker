@@ -44,7 +44,7 @@ He preparado una exquisita selección de "juguetes" para tortur... digooo, *entr
 3.  Haz clic en **Install Module**.
 4.  Pega este enlace en el campo **Manifest URL**:
     ```
-    https://github.com/bernardoclon/joker-locker/releases/latest/download/module.json
+    https://raw.githubusercontent.com/bernardoclon/joker-locker/refs/heads/main/module.json
     ```
 5.  Haz clic en **Install**. ¡Y que empiece la fiesta!
 
