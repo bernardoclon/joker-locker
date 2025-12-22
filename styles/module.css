@@ -135,7 +135,8 @@
   border-radius: 0;
   margin-bottom: 2rem;
   height: calc(2 * var(--lock-font-size));
-  color: var(--lock-secondary-color-100);
+  color: #ffffff;
+  caret-color: #ffffff;
   text-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100);
   filter: brightness(1.2);
   pointer-events: none;
@@ -164,7 +165,7 @@
   margin: 0;
   width: calc(3 * var(--lock-font-size));
   height: calc(3 * var(--lock-font-size));
-  color: var(--lock-secondary-color-100);
+  color: #ffffff;
   background-color: #0a0a0a;
   border: 1px solid var(--lock-secondary-color-100);
   border-radius: 5px;
@@ -176,7 +177,7 @@
 .puzzle-lock #number-lock .keypad-grid .keypad-button:hover {
   box-shadow: 0 0 8px var(--lock-secondary-color-100);
   background-color: var(--lock-secondary-color-25);
-  color: #fff;
+  color: #ffffcc;
 }
 .puzzle-lock #number-lock .keypad-grid .keypad-button:focus, .puzzle-lock #number-lock .keypad-grid .keypad-button:active {
   box-shadow: 0 0 8px var(--lock-secondary-color-100);
@@ -190,7 +191,8 @@
   box-shadow: none;
   border-radius: 0;
   height: calc(2 * var(--lock-font-size));
-  color: var(--lock-secondary-color-100);
+  color: #ffffff;
+  caret-color: #ffffff;
   text-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100);
   filter: brightness(1.2);
 }
@@ -484,7 +486,9 @@
   box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
   border-radius: 0;
   height: calc(2 * var(--lock-font-size));
-  color: var(--lock-primary-color-100);
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: #0a0a0a;
   text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
   box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100), 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset;
   filter: brightness(1.2);
@@ -511,7 +515,9 @@
   min-width: calc(var(--lock-font-size) * 1.2);
   height: calc(2 * var(--lock-font-size));
   text-align: center;
-  color: var(--lock-text-color);
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: transparent;
   border: none;
   border-bottom: 1px solid var(--lock-text-color);
   border-radius: 0;
@@ -610,7 +616,9 @@
   box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
   border-radius: 0;
   height: calc(2 * var(--lock-font-size));
-  color: var(--lock-primary-color-100);
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: #0a0a0a;
   text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
   box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100), 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset;
   filter: brightness(1.2);
@@ -753,6 +761,8 @@
 }
 .puzzle-lock #match-lock .match-table .svg-container line {
   filter: drop-shadow(0 0 var(--glow-size-small) black);
+  stroke: #ffffff;
+  stroke-width: 2px;
 }
 .puzzle-lock #match-lock .match-table .match-col-right,
 .puzzle-lock #match-lock .match-table .match-col-left {
@@ -772,7 +782,7 @@
   text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
 }
 .puzzle-lock #match-lock .match-table .pair-word.selected, .puzzle-lock #match-lock .match-table .pair-match.selected {
-  color: var(--lock-secondary-color-100);
+  color: #ffffcc;
 }
 .puzzle-lock #match-lock .match-table .pair-word.selected.is-image, .puzzle-lock #match-lock .match-table .pair-match.selected.is-image {
   border-color: var(--lock-secondary-color-100);
@@ -794,7 +804,9 @@
   box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
   border-radius: 0;
   height: calc(2 * var(--lock-font-size));
-  color: var(--lock-primary-color-100);
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: #0a0a0a;
   text-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
   box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100), 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset;
   filter: brightness(1.2);

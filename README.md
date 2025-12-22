@@ -19,6 +19,7 @@ He preparado una exquisita selección de "juguetes" para tortur... digooo, *entr
 *   **🧩 Sudoku**: Sí, matemáticas. El verdadero horror.
 *   **🖼️ Mosaico**: Gira las piezas hasta que veas la imagen completa.
 *   **🔄 Rueda de Imágenes**: Alinea los anillos concéntricos. Hipnótico, ¿verdad?
+*   **🧪 Equilibrio Químico**: Mezcla las sustancias hasta lograr el color exacto. Cuidado no te quemes.
 
 ### Mecánicos y Manuales
 *   **🎚️ Interruptores**: Configura los interruptores en el orden correcto. Tic-tac.
@@ -26,6 +27,8 @@ He preparado una exquisita selección de "juguetes" para tortur... digooo, *entr
 *   **🧩 Baldosas Deslizantes**: El clásico rompecabezas de 15 piezas que te hará arrancarte el pelo.
 *   **♟️ Peones y Estrellas**: Coloca los peones en la cuadrícula sin cubrir las estrellas equivocadas.
 *   **🔗 Coincidencia**: Une las parejas. Palabras, imágenes... ¿puedes ver la conexión?
+*   **🪨 Runas Celtas**: Alinea las runas antiguas. ¿Sabes leer el lenguaje de los druidas?
+*   **⚡ Circuito de Energía**: Rota los nodos para restaurar el flujo. Un trabajo de hacking rápido y sucio.
 
 ### Para los Oídos Finos
 *   **🎵 Melodía**: Escucha y repite. ¿Tienes oído absoluto o eres sordo como un murciélago?
@@ -69,4 +72,4 @@ Este módulo requiere que tus jugadores tengan cerebro. No me hago responsable d
 
 *Creado con una sonrisa.* 🤡
 
-[Reportar un problema (si te atreves)](https://github.com/bernardoclon/jocker-loker/issues)
+[Reportar un problema (si te atreves)](https://github.com/bernardoclon/joker-locker/issues)
