@@ -90,6 +90,7 @@
 .puzzle-lock .puzzle-lock-inner {
   display: flex;
   flex-direction: column;
+  color: white;
   max-width: calc(12 * var(--lock-font-size));
   border: 2px solid var(--lock-primary-color-100);
   border-radius: 1rem;
