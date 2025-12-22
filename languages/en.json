@@ -154,6 +154,26 @@
                 "label": "Cylinder"
             }
         },
+        "chemical-balance-lock": {
+            "name": "Chemical Balance",
+            "description": "A puzzle where the player must mix different 'substances' (colors) to achieve a specific target color to unlock.",
+            "playerInfo": "Add or remove drops of each substance to achieve the perfect mix.",
+            "colorCount": {
+                "label": "Number of Substances",
+                "notes": "Choose how many different substances (2 to 5) are part of the puzzle."
+            },
+            "mixedColor": "Mixed Color",
+            "color1": "Substance 1 (Color)",
+            "amount1": "Required Amount 1",
+            "color2": "Substance 2 (Color)",
+            "amount2": "Required Amount 2",
+            "color3": "Substance 3 (Color)",
+            "amount3": "Required Amount 3",
+            "color4": "Substance 4 (Color)",
+            "amount4": "Required Amount 4",
+            "color5": "Substance 5 (Color)",
+            "amount5": "Required Amount 5"
+        },
         "sudoku-lock": {
             "name": "Sudoku",
             "description": "A lock that requires the player to solve a sudoku puzzle to unlock the document. The default numbers can be replaced with images or glyphs for a more thematic lock.",
@@ -371,6 +391,20 @@
                 "flute": "Flute",
                 "christmas-bell": "Christmas Bells"
             }
+        },
+        "energy-circuit-lock": {
+            "name": "Energy Circuit",
+            "description": "A hacking puzzle where you must rotate nodes to restore power flow.",
+            "playerInfo": "Rotate the pieces to connect the power Source (S) to the Terminal (E) before time runs out.",
+            "gridSize": {
+                "label": "Grid Size",
+                "notes": "The size of the board (e.g. 5 for a 5x5 grid)."
+            },
+            "timeLimit": {
+                "label": "Time Limit",
+                "notes": "Time in seconds to solve the puzzle before it resets."
+            },
+            "timer": "Time Left"
         },
         "flags": {},
         "attempts": "Attempts Left",

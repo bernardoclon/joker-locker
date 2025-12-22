@@ -154,6 +154,26 @@
                 "label": "Cilindro"
             }
         },
+        "chemical-balance-lock": {
+            "name": "Equilibrio Químico",
+            "description": "Un puzzle donde el jugador debe mezclar diferentes 'sustancias' (colores) para alcanzar un color específico y desbloquear.",
+            "playerInfo": "Añade o quita gotas de cada sustancia para lograr la mezcla perfecta.",
+            "colorCount": {
+                "label": "Número de Sustancias",
+                "notes": "Elige cuántas sustancias diferentes (de 2 a 5) forman parte del puzzle."
+            },
+            "mixedColor": "Color Mezclado",
+            "color1": "Sustancia 1 (Color)",
+            "amount1": "Cantidad Requerida 1",
+            "color2": "Sustancia 2 (Color)",
+            "amount2": "Cantidad Requerida 2",
+            "color3": "Sustancia 3 (Color)",
+            "amount3": "Cantidad Requerida 3",
+            "color4": "Sustancia 4 (Color)",
+            "amount4": "Cantidad Requerida 4",
+            "color5": "Sustancia 5 (Color)",
+            "amount5": "Cantidad Requerida 5"
+        },
         "sudoku-lock": {
             "name": "Sudoku",
             "description": "Un bloqueo que requiere que el jugador resuelva un puzzle de sudoku para desbloquear el documento. Los números predeterminados pueden ser reemplazados con imágenes o glifos para un bloqueo más temático.",
@@ -371,6 +391,20 @@
                 "flute": "Flauta",
                 "christmas-bell": "Campanas Navideñas"
             }
+        },
+        "energy-circuit-lock": {
+            "name": "Circuito de Energía",
+            "description": "Un puzzle de hacking donde debes rotar los nodos para restaurar el flujo de energía.",
+            "playerInfo": "Rota las piezas para conectar la fuente de energía (S) con el terminal (E) antes de que se agote el tiempo.",
+            "gridSize": {
+                "label": "Tamaño de Cuadrícula",
+                "notes": "El tamaño del tablero (ej. 5 para una cuadrícula de 5x5)."
+            },
+            "timeLimit": {
+                "label": "Límite de Tiempo",
+                "notes": "Tiempo en segundos para resolver el puzzle antes de que se reinicie."
+            },
+            "timer": "Tiempo Restante"
         },
         "flags": {},
         "attempts": "Intentos Restantes",

@@ -1097,3 +1097,261 @@
   border: 1px solid #6c3483 !important;
   text-transform: uppercase;
 }
+
+/* Energy Circuit Lock Styles */
+.puzzle-lock #energy-circuit-lock.puzzle-lock-inner {
+  max-width: 550px;
+}
+
+.puzzle-lock #energy-circuit-lock .circuit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.puzzle-lock #energy-circuit-lock .timer-display {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff4444;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.puzzle-lock #energy-circuit-lock .circuit-grid {
+  display: grid;
+  gap: 2px;
+  background: #1a1a1a;
+  padding: 5px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px #000;
+  width: 500px;
+  aspect-ratio: 1;
+}
+
+.puzzle-lock #energy-circuit-lock .node {
+  width: 100%;
+  height: 100%;
+  background: #222;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.puzzle-lock #energy-circuit-lock .node:hover {
+  background: #2a2a2a;
+}
+
+.puzzle-lock #energy-circuit-lock .node svg {
+  width: 100%;
+  height: 100%;
+  stroke: #444;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  transition: transform 0.3s ease, stroke 0.3s;
+}
+
+/* Powered State */
+.puzzle-lock #energy-circuit-lock .node.powered svg {
+  stroke: #00e5ff;
+  filter: drop-shadow(0 0 3px #00e5ff);
+}
+
+/* Source Node */
+.puzzle-lock #energy-circuit-lock .node.source svg {
+  stroke: #00ff00;
+}
+
+.puzzle-lock #energy-circuit-lock .node.source.powered svg {
+  filter: drop-shadow(0 0 5px #00ff00);
+}
+
+/* Sink Node */
+.puzzle-lock #energy-circuit-lock .node.sink svg {
+  stroke: #ff0000;
+}
+
+.puzzle-lock #energy-circuit-lock .node.sink.powered svg {
+  stroke: #00ff00;
+  filter: drop-shadow(0 0 8px #00ff00);
+}
+
+.puzzle-lock #energy-circuit-lock .game-over-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.puzzle-lock #energy-circuit-lock .restart-puzzle {
+  margin-top: 15px;
+}
+
+/* Chemical Balance Lock Styles - Container Fix */
+.puzzle-lock #chemical-balance-lock.puzzle-lock-inner {
+  max-width: 100%;
+  padding: 3%;
+}
+
+/* Chemical Balance Lock Styles */
+.puzzle-lock #chemical-balance-lock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: var(--lock-text-color);
+  padding: 20px;
+}
+
+.puzzle-lock #chemical-balance-lock .chemical-lab {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.puzzle-lock #chemical-balance-lock .tubes-rack {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+.puzzle-lock #chemical-balance-lock .tube-station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.puzzle-lock #chemical-balance-lock .test-tube {
+  width: 40px;
+  height: 150px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.puzzle-lock #chemical-balance-lock .liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: height 0.3s ease-out, background-color 0.3s ease;
+  box-shadow: 0 0 10px inset rgba(0,0,0,0.2);
+}
+
+.puzzle-lock #chemical-balance-lock .liquid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.puzzle-lock #chemical-balance-lock .glass-shine {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 20%;
+  height: 80%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.puzzle-lock #chemical-balance-lock .measure-marks {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  bottom: 20px;
+  width: 10px;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.3) 0, rgba(255,255,255,0.3) 1px, transparent 1px, transparent 10px);
+  pointer-events: none;
+}
+
+.puzzle-lock #chemical-balance-lock .controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.puzzle-lock #chemical-balance-lock .mixing-station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.puzzle-lock #chemical-balance-lock .beaker {
+  width: 120px;
+  height: 140px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%);
+  margin-bottom: 10px;
+}
+
+.puzzle-lock #chemical-balance-lock .subtract-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--lock-primary-color-100);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--lock-text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.puzzle-lock #chemical-balance-lock .add-color:hover,
+.puzzle-lock #chemical-balance-lock .subtract-color:hover {
+  background: var(--lock-primary-color-50);
+  transform: scale(1.1);
+}
+
+.puzzle-lock #chemical-balance-lock .amount-display {
+  font-family: var(--lock-secondary-font);
+  font-size: 1.2em;
+  min-width: 30px;
+  text-align: center;
+}
+
+.puzzle-lock #chemical-balance-lock .unlock-attempt {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-family: var(--lock-primary-font);
+  background-color: var(--lock-primary-color-100);
+  color: var(--lock-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px var(--lock-primary-color-50);
+  transition: all 0.2s ease-in-out;
+}
+
+.puzzle-lock #chemical-balance-lock .unlock-attempt:hover {
+  background-color: var(--lock-secondary-color-100);
+  box-shadow: 0 0 15px var(--lock-secondary-color-50);
+}

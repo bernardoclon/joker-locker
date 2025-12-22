@@ -1,6 +1,7 @@
 import { initConfig } from "./config.js";
 import { registerSettings } from "./settings.js";
 import { Socket } from "./lib/socket.js";
+import { LOCK_DEFAULTS } from "./defaults.js";
 import { BasePuzzleLock } from "./app/BasePuzzleLock.js";
 import { NumberLock } from "./app/NumberLock.js";
 import { PasswordLock } from "./app/PasswordLock.js";
@@ -20,12 +21,14 @@ import { PickLock } from "./app/picklocker.js";
 import { FCerradura2 } from "./app/OPicklock.js";
 import { CelticLock } from "./app/CelticLock.js";
 import { JingleBells} from "./app/JingleBells.js";  
+import { EnergyCircuitLock } from "./app/energy-circuit-lock.js";
+import { ChemicalBalanceLock } from "./app/ChemicalBalanceLock.js";
 
 export const MODULE_ID = "joker-locker";
 
 export const LOCKS = {};
 
-const LOCK_CLS = [NumberLock, PasswordLock, ItemLock, SwitchesLock, CryptexLock, SudokuLock, ImageWheel, MastermindLock, FillBlanksLock, MosaicLock, SoundLock, FifteenLock, FourByFourLock, MatchLock, PickLock, FCerradura2, CelticLock, JingleBells];
+const LOCK_CLS = [NumberLock, PasswordLock, ItemLock, SwitchesLock, CryptexLock, SudokuLock, ImageWheel, MastermindLock, FillBlanksLock, MosaicLock, SoundLock, FifteenLock, FourByFourLock, MatchLock, PickLock, FCerradura2, CelticLock, JingleBells, EnergyCircuitLock, ChemicalBalanceLock];
 
 export function registerLock(lockType, lockClass) {
     LOCKS[lockType] = lockClass;
@@ -38,6 +41,14 @@ export async function unlock(uuid) {
     if (!game.users.find((u) => u.isGM && u.active) && !document.isOwner) return ui.notifications.error(game.i18n.localize(`${MODULE_ID}.notifications.noGM`));
     //check lock type
     const lockType = document.getFlag(MODULE_ID, "general.lockType") ?? "none";
+
+    if (LOCK_DEFAULTS[lockType]) {
+        const currentData = document.getFlag(MODULE_ID, lockType);
+        if (foundry.utils.isEmpty(currentData)) {
+            await document.setFlag(MODULE_ID, lockType, LOCK_DEFAULTS[lockType]);
+        }
+    }
+
     const lockClass = LOCKS[lockType];
     if (!lockClass) return ui.notifications.error(game.i18n.localize(`${MODULE_ID}.notifications.noLock`));
     //check if it's already unlocked
