@@ -1,0 +1,13 @@
+<div id="password-lock">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <div class="sudoku-grid" style="grid-template-rows: repeat({{grid}}, 1fr); grid-template-columns: repeat({{grid}}, 1fr);">
+        {{#each sudokuGrid as |cell|}}
+
+        <div class="sudoku-cell {{#if cell.locked}}locked{{/if}} {{#if cell.isFA}}isFA{{/if}}" data-value="{{cell.value}}" style="{{#if cell.isImage}}background-image: url('{{cell.displayValue}}');{{/if}}">
+            {{#unless cell.isImage}}{{{cell.displayValue}}}{{/unless}}
+        </div>
+
+        {{/each}}
+    </div>
+</div>

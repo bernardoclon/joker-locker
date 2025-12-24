@@ -1,0 +1,15 @@
+<div id="mosaic-lock">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <div class="mosaic-container"
+        style="grid-template-columns: repeat({{mosaicSize}}, 1fr);grid-template-rows: repeat({{mosaicSize}}, 1fr);">
+        {{#each tiles as |tile|}}
+        <div class="tile-container" data-rotation="{{tile.rotation}}"
+            style="width: calc( var(--mosaic-size) / {{../mosaicSize}} ); height: calc( var(--mosaic-size) / {{../mosaicSize}} ); transform: rotate({{tile.rotation}}deg)">
+            <div class="mosaic-tile"
+                style="background-image: url('{{tile.url}}'); transform: translate(-{{tile.xPercent}}%, -{{tile.yPercent}}%);">
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

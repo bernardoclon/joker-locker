@@ -1,0 +1,35 @@
+<div id="pick-lock">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <p>Esta cerradura tiene {{numPins}} pines.</p>
+    <div class="lock-container">
+        <div class="top-indicator">
+            <div class="top-arrow">▾</div>
+            <div class="top-degree">0°</div>
+        </div>
+        <div class="lock-cylinder">
+            {{#each pins}}
+            <div class="pin {{#if this.set}}set{{/if}}" style="transform: rotate({{this.sweetSpot}}deg); opacity: {{#if this.set}}1{{else}}0{{/if}};">
+                <div class="pin-bar {{#if this.set}}set{{/if}}" style="opacity: {{#if this.set}}1{{else}}0{{/if}};"></div>
+            </div>
+            {{/each}}
+            <!-- Marcas de grados -->
+            {{#each degrees}}
+            <div class="degree-mark {{#if showLabel}}major{{/if}}" style="transform: rotate({{angle}}deg)">
+            {{#if showLabel}}
+            <span class="degree-label">{{label}}</span>
+            {{/if}}
+            </div>
+            {{/each}}
+            <div class="keyhole"></div>
+        </div>
+        <div class="arrows">
+            <div class="arrow left" data-direction="-5">↶</div>
+            <div class="arrow right" data-direction="5">↷</div>
+        </div>
+    </div>
+    <div class="tension-container">
+        <label for="tension">Tensión:</label>
+        <input type="range" id="tension" class="tension-bar" min="0" max="100" value="{{currentTension}}">
+    </div>
+</div>

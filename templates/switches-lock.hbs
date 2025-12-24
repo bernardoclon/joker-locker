@@ -1,0 +1,14 @@
+<div id="switches-lock">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <div class="switches-container {{#if showSwitches}}showSwitches{{/if}}">
+        {{#each switches as |switch index|}}
+        <div class="switch-container {{#if switch.value}}active{{/if}}">
+            <div class="switch-light"></div>
+            <div class="switch-button">
+                <div class="switch-dot"></div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

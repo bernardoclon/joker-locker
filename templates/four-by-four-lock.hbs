@@ -1,0 +1,31 @@
+<div id="four-by-four-lock">
+    <h1>{{general.label}}</h1>
+    {{#if general.description}}<p class="notes">{{{general.description}}}</p>{{/if}}
+    <div class="puzzle-table-container">
+        <div class="puzzle-col-display">
+            <div class="puzzle-col-display-item"></div>
+            {{#each pawnsInCols}}
+                <div class="puzzle-col-display-item">{{this}}</div>
+            {{/each}}
+        </div>
+        <div class="row-puzzle-container">
+            <div class="puzzle-row-display">
+                {{#each pawnsInRows}}
+                    <div class="puzzle-row-display-item">{{this}}</div>
+                {{/each}}
+            </div>
+            <div class="puzzle-grid-container" style="grid-template-rows: repeat({{gridSize}}, 1fr); grid-template-columns: repeat({{gridSize}}, 1fr);">
+                {{#each display as |item|}}
+                    <div class="puzzle-item" data-value="{{value}}" style="background-image: url('{{item.image}}');{{#if item.image}}--puzzle-item-highlight: var(--lock-secondary-color-100);{{/if}}">
+                        <div class="inner-pawn-image" style="{{#if item.pawnImage}}background-image: url('{{item.pawnImage}}');{{else}}display: none;{{/if}}"></div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="available-pawns" style="grid-template-columns: repeat(calc(2 * {{gridSize}}) , 1fr);">
+            {{#each availablePawns as |pawn|}}
+                <div class="available-pawn" style="background-image: url('{{pawn.image}}');"></div>
+            {{/each}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1373 @@
+.puzzle-lock-link {
+  text-decoration: underline;
+}
+
+.joker-locker-locked {
+  color: red;
+}
+
+#interface:has(#sidebar.collapsed) .puzzle-lock {
+  width: 100%;
+}
+
+.puzzle-lock {
+  --lock-primary-color-r: 142;
+  --lock-primary-color-g: 68;
+  --lock-primary-color-b: 173;
+  --lock-primary-color-100: rgb(var(--lock-primary-color-r), var(--lock-primary-color-g), var(--lock-primary-color-b));
+  --lock-primary-color-50: rgba(var(--lock-primary-color-r), var(--lock-primary-color-g), var(--lock-primary-color-b), 0.5);
+  --lock-primary-color-25: rgba(var(--lock-primary-color-r), var(--lock-primary-color-g), var(--lock-primary-color-b), 0.25);
+  --lock-secondary-color-r: 39;
+  --lock-secondary-color-g: 174;
+  --lock-secondary-color-b: 96;
+  --lock-secondary-color-100: rgb(var(--lock-secondary-color-r), var(--lock-secondary-color-g), var(--lock-secondary-color-b));
+  --lock-secondary-color-50: rgba(var(--lock-secondary-color-r), var(--lock-secondary-color-g), var(--lock-secondary-color-b), 0.5);
+  --lock-secondary-color-25: rgba(var(--lock-secondary-color-r), var(--lock-secondary-color-g), var(--lock-secondary-color-b), 0.25);
+  --lock-primary-font: "Courier New", Courier, monospace;
+  --lock-secondary-font: "Courier New", Courier, monospace;
+  --lock-text-color: #ecf0f1;
+  --zoom-level: 1;
+  --lock-font-size: calc(var(--zoom-level) * 2rem);
+  --glow-size-regular: 5px;
+  --glow-size-large: calc(var(--glow-size-regular) * 2);
+  --glow-size-small: calc(var(--glow-size-regular) / 2);
+  width: calc(100% - var(--sidebar-width));
+  left: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  border: 2px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 15px var(--lock-primary-color-50);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  font-family: var(--lock-primary-font);
+  --puzzle-lock-button-color: white;
+}
+.puzzle-lock .attempts-label {
+  color: red;
+  padding: 1rem;
+}
+.puzzle-lock .puzzle-lock-interactions {
+  position: absolute;
+  right: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5882352941);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transform: translateX(5px);
+  z-index: 1;
+}
+.puzzle-lock .puzzle-lock-interactions .puzzle-lock-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.puzzle-lock .puzzle-lock-interactions .puzzle-lock-buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--puzzle-lock-button-color);
+  font-size: 4rem;
+  padding: 1rem;
+  transition: text-shadow 0.2s ease-in-out;
+}
+.puzzle-lock .puzzle-lock-interactions .puzzle-lock-buttons button:hover {
+  text-shadow: 0 0 var(--glow-size-large) var(--puzzle-lock-button-color);
+  box-shadow: none;
+}
+.puzzle-lock .puzzle-lock-interactions .puzzle-lock-buttons button:active, .puzzle-lock .puzzle-lock-interactions .puzzle-lock-buttons button:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.puzzle-lock .puzzle-lock-inner {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  max-width: calc(12 * var(--lock-font-size));
+  border: 2px solid var(--lock-primary-color-100);
+  border-radius: 1rem;
+  padding: calc(0.5 * var(--lock-font-size));
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  box-shadow: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.puzzle-lock .puzzle-lock-inner p.notes {
+  color: var(--lock-text-color);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+.puzzle-lock .puzzle-lock-inner h1 {
+  color: var(--lock-primary-color-100);
+  font-size: calc(1 * var(--lock-font-size));
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-50);
+  border-bottom: 1px solid var(--lock-primary-color-100);
+  letter-spacing: 2px;
+}
+
+#interface {
+  position: relative;
+}
+
+.puzzle-lock #number-lock input {
+  width: 100%;
+  font-size: calc(2 * var(--lock-font-size));
+  text-align: center;
+  border: 1px solid var(--lock-secondary-color-100);
+  background: #0a0a0a;
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 2rem;
+  height: calc(2 * var(--lock-font-size));
+  color: #ffffff;
+  caret-color: #ffffff;
+  text-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100);
+  filter: brightness(1.2);
+  pointer-events: none;
+}
+.puzzle-lock #number-lock input:active, .puzzle-lock #number-lock input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.puzzle-lock #number-lock .keypad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: calc(0.5 * var(--lock-font-size));
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+.puzzle-lock #number-lock .keypad-grid .keypad-button {
+  aspect-ratio: 1;
+  font-size: calc(2 * var(--lock-font-size));
+  font-family: var(--lock-secondary-font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: calc(3 * var(--lock-font-size));
+  height: calc(3 * var(--lock-font-size));
+  color: #ffffff;
+  background-color: #0a0a0a;
+  border: 1px solid var(--lock-secondary-color-100);
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.puzzle-lock #number-lock .keypad-grid .keypad-button:hover {
+  box-shadow: 0 0 8px var(--lock-secondary-color-100);
+  background-color: var(--lock-secondary-color-25);
+  color: #ffffcc;
+}
+.puzzle-lock #number-lock .keypad-grid .keypad-button:focus, .puzzle-lock #number-lock .keypad-grid .keypad-button:active {
+  box-shadow: 0 0 8px var(--lock-secondary-color-100);
+}
+.puzzle-lock #password-lock input {
+  width: 100%;
+  font-size: calc(2 * var(--lock-font-size));
+  text-align: center;
+  border: 1px solid var(--lock-secondary-color-100);
+  background: #0a0a0a;
+  box-shadow: none;
+  border-radius: 0;
+  height: calc(2 * var(--lock-font-size));
+  color: #ffffff;
+  caret-color: #ffffff;
+  text-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100);
+  filter: brightness(1.2);
+}
+.puzzle-lock #password-lock input:active, .puzzle-lock #password-lock input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.puzzle-lock #item-lock .item-lock-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  gap: var(--lock-font-size);
+}
+.puzzle-lock #item-lock .item-lock-items .item-lock-item {
+  width: calc(var(--lock-font-size) * 2);
+  height: calc(var(--lock-font-size) * 2);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: var(--glow-size-regular);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+}
+.puzzle-lock #item-lock .item-lock-items .item-lock-item:not(.has-item) {
+  filter: grayscale(1);
+}
+.puzzle-lock #switches-lock {
+  --switch-bg-off: #ff1600;
+  --switch-bg-on: var(--lock-secondary-color-100);
+}
+@keyframes brightness-pulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+.puzzle-lock #switches-lock .switches-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.puzzle-lock #switches-lock .switches-container.showSwitches .switch-container .switch-button {
+  display: flex;
+}
+.puzzle-lock #switches-lock .switches-container.showSwitches .switch-container .switch-light {
+  width: calc(var(--lock-font-size) / 2);
+  height: calc(var(--lock-font-size) / 2);
+}
+.puzzle-lock #switches-lock .switches-container .switch-container {
+  width: calc(2 * var(--lock-font-size));
+  height: calc(2 * var(--lock-font-size));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.puzzle-lock #switches-lock .switches-container .switch-container .switch-light {
+  width: calc(var(--lock-font-size));
+  height: calc(var(--lock-font-size));
+  border-radius: 50%;
+  background-color: var(--switch-bg-off);
+  border: 2px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 3px var(--lock-primary-color-100), 0 0 3px var(--lock-primary-color-100) inset;
+  animation: brightness-pulse 5s infinite ease-in-out;
+}
+.puzzle-lock #switches-lock .switches-container .switch-container .switch-button {
+  width: calc(var(--lock-font-size) / 2);
+  height: calc(var(--lock-font-size));
+  border: 2px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 3px var(--lock-primary-color-100), 0 0 3px var(--lock-primary-color-100) inset;
+  border-radius: calc(var(--lock-font-size));
+  display: none;
+  justify-content: center;
+  position: relative;
+}
+.puzzle-lock #switches-lock .switches-container .switch-container .switch-button .switch-dot {
+  width: calc(var(--lock-font-size) / 3);
+  height: calc(var(--lock-font-size) / 3);
+  border-radius: 50%;
+  background-color: var(--lock-primary-color-100);
+  position: absolute;
+  bottom: calc(var(--lock-font-size) / 15);
+}
+.puzzle-lock #switches-lock .switches-container .switch-container.active .switch-light {
+  background-color: var(--switch-bg-on);
+}
+.puzzle-lock #switches-lock .switches-container .switch-container.active .switch-button .switch-dot {
+  bottom: unset;
+  top: calc(var(--lock-font-size) / 15);
+}
+.puzzle-lock #cryptex-lock {
+  max-width: none;
+}
+.puzzle-lock #cryptex-lock .cryptex-container {
+  display: flex;
+  color: var(--lock-text-color);
+  gap: calc(0.5 * var(--lock-font-size));
+}
+.puzzle-lock #cryptex-lock .cryptex-container .arrow-left,
+.puzzle-lock #cryptex-lock .cryptex-container .arrow-right {
+  font-size: calc(3 * var(--lock-font-size));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
+}
+.puzzle-lock #cryptex-lock .cryptex-container .arrow-left {
+  margin-right: calc(-0.3 * var(--lock-font-size));
+}
+.puzzle-lock #cryptex-lock .cryptex-container .arrow-right {
+  margin-left: calc(-0.3 * var(--lock-font-size));
+}
+.puzzle-lock #cryptex-lock .cryptex-container .cylinder {
+  display: flex;
+  flex-direction: column;
+}
+.puzzle-lock #cryptex-lock .cryptex-container .cylinder .symbol {
+  font-size: calc(1.7 * var(--lock-font-size));
+  text-align: center;
+  color: var(--lock-text-color);
+  border: 1px solid var(--lock-text-color);
+  width: calc(4 * var(--lock-font-size));
+  height: calc(2 * var(--lock-font-size));
+  display: flex;
+  background-color: var(--lock-primary-color-100);
+  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+.puzzle-lock #cryptex-lock .cryptex-container .cylinder .symbol:not(:last-child) {
+  border-bottom: 3px solid var(--lock-text-color);
+}
+.puzzle-lock #cryptex-lock input {
+  display: none;
+}
+.puzzle-lock #password-lock {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+.puzzle-lock #password-lock .sudoku-grid {
+  display: grid;
+}
+.puzzle-lock #password-lock .sudoku-cell {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  font-size: calc(2 * var(--lock-font-size));
+  text-align: center;
+  border: 1px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  border-radius: 0;
+  height: calc(2 * var(--lock-font-size));
+  color: var(--lock-text-color);
+  text-shadow: 0 0 var(--glow-size-large) var(--lock-text-color);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-text-color), 0 0 var(--glow-size-regular) var(--lock-text-color) inset;
+  filter: brightness(1.2);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.puzzle-lock #password-lock .sudoku-cell.isFA {
+  font-size: calc(1.2 * var(--lock-font-size));
+}
+.puzzle-lock #password-lock .sudoku-cell.locked {
+  border-color: var(--lock-secondary-color-100);
+  background-color: var(--lock-secondary-color-50);
+}
+.puzzle-lock #password-lock .sudoku-cell:active, .puzzle-lock #password-lock .sudoku-cell:focus {
+  outline: none;
+  box-shadow: none;
+}
+.puzzle-lock #image-wheel {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+.puzzle-lock #image-wheel .wheels-container {
+  position: relative;
+  width: calc(20 * var(--lock-font-size));
+  height: calc(20 * var(--lock-font-size));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.puzzle-lock #image-wheel .wheels-container .wheel {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid var(--lock-secondary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100), 0 0 var(--glow-size-regular) var(--lock-secondary-color-100) inset;
+  transition: filter 0.3s ease-in-out;
+}
+.puzzle-lock #image-wheel .wheels-container .wheel:hover {
+  filter: brightness(1.2);
+}
+.puzzle-lock #image-wheel .wheels-container .wheel .wheel-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.puzzle-lock #mastermind-lock {
+  color: var(--lock-text-color);
+  max-width: unset;
+}
+.puzzle-lock #mastermind-lock .previous-attempts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--lock-secondary-font);
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.puzzle-lock #mastermind-lock .previous-attempts .attempt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: calc(var(--lock-font-size) / 2);
+  border-bottom: 1px solid var(--lock-primary-color-100);
+}
+.puzzle-lock #mastermind-lock .previous-attempts .attempt-container .mastermind-pip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(2 * var(--lock-font-size));
+  height: calc(1 * var(--lock-font-size));
+}
+.puzzle-lock #mastermind-lock .previous-attempts .attempt-container .mastermind-pip .pip-inner {
+  width: calc(0.5 * var(--lock-font-size));
+  height: calc(0.5 * var(--lock-font-size));
+  border-radius: 50%;
+  border: 2px solid var(--lock-secondary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100), 0 0 var(--glow-size-regular) var(--lock-secondary-color-100) inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(0.35 * var(--lock-font-size));
+}
+.puzzle-lock #mastermind-lock .current-attempt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: calc(var(--lock-font-size) / 2);
+  font-family: var(--lock-secondary-font);
+}
+.puzzle-lock #mastermind-lock .current-attempt .mastermind-pip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(2 * var(--lock-font-size));
+  height: calc(2 * var(--lock-font-size));
+}
+.puzzle-lock #mastermind-lock .current-attempt .mastermind-pip .pip-inner {
+  width: calc(1 * var(--lock-font-size));
+  height: calc(1 * var(--lock-font-size));
+  border-radius: 50%;
+  border: 3px solid var(--lock-secondary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100), 0 0 var(--glow-size-regular) var(--lock-secondary-color-100) inset;
+  transition: filter 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(0.6 * var(--lock-font-size));
+}
+.puzzle-lock #mastermind-lock .current-attempt .mastermind-pip .pip-inner:hover {
+  filter: brightness(1.4);
+}
+.puzzle-lock #mastermind-lock input {
+  width: 100%;
+  font-size: calc(2 * var(--lock-font-size));
+  text-align: center;
+  border: 1px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  border-radius: 0;
+  height: calc(2 * var(--lock-font-size));
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: #0a0a0a;
+  text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100), 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset;
+  filter: brightness(1.2);
+}
+.puzzle-lock #mastermind-lock input:active, .puzzle-lock #mastermind-lock input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.puzzle-lock #fill-blanks-lock {
+  font-size: calc(2 * var(--lock-font-size));
+  color: var(--lock-text-color);
+  max-width: 75%;
+}
+.puzzle-lock #fill-blanks-lock span {
+  display: inline-block;
+  width: calc(var(--lock-font-size));
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  height: calc(2 * var(--lock-font-size));
+  text-align: center;
+}
+.puzzle-lock #fill-blanks-lock input {
+  width: calc(var(--lock-font-size));
+  min-width: calc(var(--lock-font-size) * 1.2);
+  height: calc(2 * var(--lock-font-size));
+  text-align: center;
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--lock-text-color);
+  border-radius: 0;
+}
+.puzzle-lock #fill-blanks-lock input:focus, .puzzle-lock #fill-blanks-lock input:active {
+  outline: none;
+  box-shadow: none;
+}
+.puzzle-lock #fill-blanks-lock input::-moz-placeholder {
+  color: var(--lock-text-color);
+}
+.puzzle-lock #fill-blanks-lock input::placeholder {
+  color: var(--lock-text-color);
+}
+.puzzle-lock #fill-blanks-lock .phrase-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.puzzle-lock #mosaic-lock {
+  --mosaic-size: 600px;
+  max-width: unset;
+}
+.puzzle-lock #mosaic-lock .mosaic-container {
+  width: var(--mosaic-size);
+  height: var(--mosaic-size);
+  display: grid;
+}
+.puzzle-lock #mosaic-lock .mosaic-container .tile-container {
+  overflow: hidden;
+  transition: filter 0.2s;
+}
+.puzzle-lock #mosaic-lock .mosaic-container .tile-container:hover {
+  filter: brightness(1.5);
+}
+.puzzle-lock #mosaic-lock .mosaic-container .tile-container .mosaic-tile {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: var(--mosaic-size);
+  height: var(--mosaic-size);
+  pointer-events: none;
+}
+.puzzle-lock #sound-lock {
+  max-width: unset;
+}
+.puzzle-lock #sound-lock .sequence-container {
+  height: calc(8 * var(--lock-font-size));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+  gap: calc(1 * var(--lock-font-size));
+  margin: calc(1 * var(--lock-font-size)) 0;
+}
+.puzzle-lock #sound-lock .sequence-container .chord-container {
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: calc(1 * var(--lock-font-size));
+  width: calc(1 * var(--lock-font-size));
+}
+.puzzle-lock #sound-lock .sequence-container .chord-container .chord-dot {
+  width: calc(0.5 * var(--lock-font-size));
+  height: calc(0.5 * var(--lock-font-size));
+  border-radius: 50%;
+  background-color: var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  position: absolute;
+}
+.puzzle-lock #sound-lock .solution-sequence-container {
+  color: var(--lock-text-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.puzzle-lock #sound-lock .solution-sequence-container span {
+  font-size: calc(1.7 * var(--lock-font-size));
+  width: calc(2 * var(--lock-font-size));
+  text-align: center;
+  border: 1px solid;
+  margin: calc(0.2 * var(--lock-font-size));
+  border-radius: 50%;
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
+}
+.puzzle-lock #sound-lock input {
+  width: 100%;
+  font-size: calc(2 * var(--lock-font-size));
+  text-align: center;
+  border: 1px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  border-radius: 0;
+  height: calc(2 * var(--lock-font-size));
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: #0a0a0a;
+  text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100), 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset;
+  filter: brightness(1.2);
+}
+.puzzle-lock #sound-lock input:active, .puzzle-lock #sound-lock input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.puzzle-lock #fifteen-lock {
+  --mosaic-size: 600px;
+  max-width: unset;
+}
+.puzzle-lock #fifteen-lock .mosaic-container {
+  width: var(--mosaic-size);
+  height: var(--mosaic-size);
+  display: grid;
+}
+.puzzle-lock #fifteen-lock .mosaic-container .tile-container {
+  overflow: hidden;
+  transition: filter 0.2s;
+}
+.puzzle-lock #fifteen-lock .mosaic-container .tile-container:hover {
+  filter: brightness(1.5);
+}
+.puzzle-lock #fifteen-lock .mosaic-container .tile-container .mosaic-tile {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: var(--mosaic-size);
+  height: var(--mosaic-size);
+  pointer-events: none;
+}
+.puzzle-lock #four-by-four-lock {
+  color: var(--lock-text-color);
+  max-width: unset;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .puzzle-row-display-item,
+.puzzle-lock #four-by-four-lock .puzzle-table-container .puzzle-col-display-item,
+.puzzle-lock #four-by-four-lock .puzzle-table-container .puzzle-item {
+  width: calc(2 * var(--lock-font-size));
+  height: calc(2 * var(--lock-font-size));
+  font-size: calc(1.5 * var(--lock-font-size));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .puzzle-col-display {
+  display: flex;
+  flex-direction: row;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .row-puzzle-container {
+  display: flex;
+  flex-direction: row;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .row-puzzle-container .puzzle-row-display {
+  display: flex;
+  flex-direction: column;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .row-puzzle-container .puzzle-grid-container {
+  display: grid;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .row-puzzle-container .puzzle-grid-container .puzzle-item {
+  --puzzle-item-highlight: var(--lock-primary-color-100);
+  border: 1px solid var(--puzzle-item-highlight);
+  box-shadow: 0 0 var(--glow-size-regular) var(--puzzle-item-highlight) inset;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .row-puzzle-container .puzzle-grid-container .puzzle-item .inner-pawn-image {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 1px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset, 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  transform: scale(0.9);
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .available-pawns {
+  display: grid;
+  padding: calc(0.5 * var(--lock-font-size));
+  padding-bottom: 0;
+  min-height: calc(var(--lock-font-size));
+  gap: calc(0.3 * var(--lock-font-size));
+}
+.puzzle-lock #four-by-four-lock .puzzle-table-container .available-pawns .available-pawn {
+  width: calc(var(--lock-font-size));
+  height: calc(var(--lock-font-size));
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset, 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  border-radius: 50%;
+}
+.puzzle-lock #match-lock {
+  max-width: unset;
+  color: var(--lock-text-color);
+}
+.puzzle-lock #match-lock .match-table {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: calc(15 * var(--lock-font-size));
+}
+.puzzle-lock #match-lock .match-table:has(.is-image) {
+  justify-content: space-between;
+}
+.puzzle-lock #match-lock .match-table .letters-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.puzzle-lock #match-lock .match-table .letters-container span {
+  position: absolute;
+  font-size: calc(1 * var(--lock-font-size));
+  text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
+  transform: translate(-50%, -50%);
+  width: calc(1 * var(--lock-font-size));
+  height: calc(1 * var(--lock-font-size));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--lock-primary-color-100);
+}
+.puzzle-lock #match-lock .match-table .svg-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.puzzle-lock #match-lock .match-table .svg-container line {
+  filter: drop-shadow(0 0 var(--glow-size-small) black);
+  stroke: #ffffff;
+  stroke-width: 2px;
+}
+.puzzle-lock #match-lock .match-table .match-col-right,
+.puzzle-lock #match-lock .match-table .match-col-left {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  gap: calc(0.3 * var(--lock-font-size));
+}
+.puzzle-lock #match-lock .match-table .pair-word {
+  text-align: right;
+}
+.puzzle-lock #match-lock .match-table .pair-match {
+  text-align: left;
+}
+.puzzle-lock #match-lock .match-table .pair-word, .puzzle-lock #match-lock .match-table .pair-match {
+  font-size: calc(2 * var(--lock-font-size));
+  text-shadow: 0 0 var(--glow-size-large) var(--lock-primary-color-100);
+}
+.puzzle-lock #match-lock .match-table .pair-word.selected, .puzzle-lock #match-lock .match-table .pair-match.selected {
+  color: #ffffcc;
+}
+.puzzle-lock #match-lock .match-table .pair-word.selected.is-image, .puzzle-lock #match-lock .match-table .pair-match.selected.is-image {
+  border-color: var(--lock-secondary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-secondary-color-100), 0 0 var(--glow-size-regular) var(--lock-secondary-color-100) inset;
+}
+.puzzle-lock #match-lock .match-table .pair-word.is-image, .puzzle-lock #match-lock .match-table .pair-match.is-image {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: calc(2 * var(--lock-font-size));
+  height: calc(2 * var(--lock-font-size));
+  border: 1px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100), 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset;
+}
+.puzzle-lock #match-lock input {
+  font-size: calc(2 * var(--lock-font-size));
+  text-align: center;
+  border: 1px solid var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  border-radius: 0;
+  height: calc(2 * var(--lock-font-size));
+  color: #ffffff;
+  caret-color: #ffffff;
+  background: #0a0a0a;
+  text-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100);
+  box-shadow: 0 0 var(--glow-size-regular) var(--lock-primary-color-100), 0 0 var(--glow-size-regular) var(--lock-primary-color-100) inset;
+  filter: brightness(1.2);
+}
+.puzzle-lock #match-lock input:active, .puzzle-lock #match-lock input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Pick Lock Styles */
+.puzzle-lock #pick-lock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.puzzle-lock #pick-lock .lock-container {
+  position: relative;
+  margin: 50px 150px;
+  width: 300px;
+  height: 300px;
+}
+
+.puzzle-lock #pick-lock .lock-cylinder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid var(--lock-primary-color-100);
+  position: relative;
+  background: radial-gradient(circle, var(--lock-secondary-color-100) 0%, var(--lock-secondary-color-50) 100%);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 20px var(--lock-primary-color-50);
+  transition: transform 0.2s ease-out;
+}
+
+.puzzle-lock #pick-lock .keyhole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 100px;
+  pointer-events: none;
+  filter: drop-shadow(0 0 1px #ffffff) drop-shadow(0 0 3px #ffffff);
+  opacity: 1;
+  z-index: 0;
+}
+
+.puzzle-lock #pick-lock .keyhole::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: #050505;
+  border-radius: 50%;
+}
+
+.puzzle-lock #pick-lock .keyhole::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 60px;
+  background: #050505;
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+}
+
+.puzzle-lock #pick-lock .pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--lock-primary-color-100) 0%, var(--lock-secondary-color-100) 100%);
+  transform-origin: bottom center;
+  margin-left: -1.5px;
+  margin-top: -100px;
+  border-radius: 1px;
+  box-shadow: 0 0 5px var(--lock-primary-color-50);
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.puzzle-lock #pick-lock .pin-bar {
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, #00aa00 0%, #005500 100%);
+  position: absolute;
+  bottom: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+  border-radius: 1px;
+  box-shadow: 0 0 10px #00aa00;
+}
+
+.puzzle-lock #pick-lock .degree-mark {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform-origin: 0 138px;
+  width: 0;
+  height: 0;
+}
+
+/* Short tick for each degree mark */
+.puzzle-lock #pick-lock .degree-mark::before {
+  content: "";
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  width: 2px;
+  height: 8px;
+  background: var(--lock-primary-color-100);
+  border-radius: 1px;
+  top: 0;
+  opacity: 0.9;
+}
+
+/* Longer tick for major marks (e.g., every 45°) */
+.puzzle-lock #pick-lock .degree-mark.major::before {
+  height: 18px;
+  background: var(--lock-primary-color-100);
+  opacity: 1;
+}
+
+.puzzle-lock #pick-lock .degree-label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  transform: translate(-50%, -100%);
+  font-size: 10px;
+  color: var(--lock-primary-color-100);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--lock-primary-color-100), 0 0 10px var(--lock-primary-color-50);
+}
+
+.puzzle-lock #pick-lock .arrows {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 80px;
+}
+
+.puzzle-lock #pick-lock .top-indicator {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.puzzle-lock #pick-lock .top-arrow {
+  font-size: 20px;
+  color: var(--lock-primary-color-100);
+  text-shadow: 0 0 5px var(--lock-primary-color-100);
+}
+
+.puzzle-lock #pick-lock .top-degree {
+  margin-top: 25px;
+  margin-left: 7px;
+  font-size: 12px;
+  color: var(--lock-primary-color-100);
+  text-shadow: 0 0 5px var(--lock-primary-color-100);
+}
+
+.puzzle-lock #pick-lock .arrow {
+  font-size: 36px;
+  color: var(--lock-primary-color-100);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 5px var(--lock-primary-color-100);
+}
+
+.puzzle-lock #pick-lock .arrow:hover {
+  color: var(--lock-primary-color-50);
+  transform: scale(1.1);
+  text-shadow: 0 0 10px var(--lock-primary-color-50);
+}
+
+.puzzle-lock .tension-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.puzzle-lock .tension-container label {
+  font-size: 16px;
+  color: var(--lock-text-color);
+  text-shadow: 0 0 5px var(--lock-primary-color-100);
+}
+
+.puzzle-lock .tension-bar {
+  width: 200px;
+}
+
+/* F Cerradura 2 Styles */
+.puzzle-lock #f-cerradura-2 {
+  max-width: unset;
+}
+
+#f-cerradura-2 .pins-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: nowrap;
+  width: max-content;
+  min-width: 100%;
+}
+
+#f-cerradura-2 .pin-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+#f-cerradura-2 .pin-info {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+#f-cerradura-2 .pin-bar-container {
+  width: 30px;
+  height: 200px;
+  background: #ddd;
+  border: 1px solid #999;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+#f-cerradura-2 .pin-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: orange;
+  border-radius: 0 0 5px 5px;
+  pointer-events: none;
+}
+
+/* Energy Circuit Lock Styles */
+.puzzle-lock #energy-circuit-lock.puzzle-lock-inner {
+  max-width: 550px;
+}
+
+.puzzle-lock #energy-circuit-lock .circuit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.puzzle-lock #energy-circuit-lock .timer-display {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff4444;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.puzzle-lock #energy-circuit-lock .circuit-grid {
+  display: grid;
+  gap: 2px;
+  background: #1a1a1a;
+  padding: 5px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px #000;
+  width: 500px;
+  aspect-ratio: 1;
+}
+
+.puzzle-lock #energy-circuit-lock .node {
+  width: 100%;
+  height: 100%;
+  background: #222;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.puzzle-lock #energy-circuit-lock .node:hover {
+  background: #2a2a2a;
+}
+
+.puzzle-lock #energy-circuit-lock .node svg {
+  width: 100%;
+  height: 100%;
+  stroke: #444;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  transition: transform 0.3s ease, stroke 0.3s;
+}
+
+/* Powered State */
+.puzzle-lock #energy-circuit-lock .node.powered svg {
+  stroke: #00e5ff;
+  filter: drop-shadow(0 0 3px #00e5ff);
+}
+
+/* Source Node */
+.puzzle-lock #energy-circuit-lock .node.source svg {
+  stroke: #00ff00;
+}
+
+.puzzle-lock #energy-circuit-lock .node.source.powered svg {
+  filter: drop-shadow(0 0 5px #00ff00);
+}
+
+/* Sink Node */
+.puzzle-lock #energy-circuit-lock .node.sink svg {
+  stroke: #ff0000;
+}
+
+.puzzle-lock #energy-circuit-lock .node.sink.powered svg {
+  stroke: #00ff00;
+  filter: drop-shadow(0 0 8px #00ff00);
+}
+
+.puzzle-lock #energy-circuit-lock .game-over-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.puzzle-lock #energy-circuit-lock .restart-puzzle {
+  margin-top: 15px;
+}
+
+/* Chemical Balance Lock Styles - Container Fix */
+.puzzle-lock #chemical-balance-lock.puzzle-lock-inner {
+  max-width: 100%;
+  padding: 3%;
+}
+
+/* Chemical Balance Lock Styles */
+.puzzle-lock #chemical-balance-lock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: var(--lock-text-color);
+  padding: 20px;
+}
+
+.puzzle-lock #chemical-balance-lock .chemical-lab {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.puzzle-lock #chemical-balance-lock .tubes-rack {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+.puzzle-lock #chemical-balance-lock .tube-station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.puzzle-lock #chemical-balance-lock .test-tube {
+  width: 40px;
+  height: 150px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.puzzle-lock #chemical-balance-lock .liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: height 0.3s ease-out, background-color 0.3s ease;
+  box-shadow: 0 0 10px inset rgba(0,0,0,0.2);
+}
+
+.puzzle-lock #chemical-balance-lock .liquid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.puzzle-lock #chemical-balance-lock .glass-shine {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 20%;
+  height: 80%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.puzzle-lock #chemical-balance-lock .measure-marks {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  bottom: 20px;
+  width: 10px;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.3) 0, rgba(255,255,255,0.3) 1px, transparent 1px, transparent 10px);
+  pointer-events: none;
+}
+
+.puzzle-lock #chemical-balance-lock .controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.puzzle-lock #chemical-balance-lock .mixing-station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.puzzle-lock #chemical-balance-lock .beaker {
+  width: 120px;
+  height: 140px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%);
+  margin-bottom: 10px;
+}
+
+.puzzle-lock #chemical-balance-lock .subtract-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--lock-primary-color-100);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--lock-text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.puzzle-lock #chemical-balance-lock .add-color:hover,
+.puzzle-lock #chemical-balance-lock .subtract-color:hover {
+  background: var(--lock-primary-color-50);
+  transform: scale(1.1);
+}
+
+.puzzle-lock #chemical-balance-lock .amount-display {
+  font-family: var(--lock-secondary-font);
+  font-size: 1.2em;
+  min-width: 30px;
+  text-align: center;
+}
+
+.puzzle-lock #chemical-balance-lock .unlock-attempt {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-family: var(--lock-primary-font);
+  background-color: var(--lock-primary-color-100);
+  color: var(--lock-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px var(--lock-primary-color-50);
+  transition: all 0.2s ease-in-out;
+}
+
+.puzzle-lock #chemical-balance-lock .unlock-attempt:hover {
+  background-color: var(--lock-secondary-color-100);
+  box-shadow: 0 0 15px var(--lock-secondary-color-50);
+}
+
+/* Estilos para las ventanas de Configuración (The Riddler Theme) */
+#general-lock-config,
+#joker-locker,
+#lock-configuration {
+  border: 2px solid #8e44ad !important;
+  box-shadow: 0 0 15px rgba(142, 68, 173, 0.5) !important;
+  font-family: "Courier New", Courier, monospace !important;
+  background-color: #1a1a1a !important;
+}
+
+#general-lock-config .window-header,
+#joker-locker .window-header,
+#lock-configuration .window-header {
+  border-bottom: 1px solid #8e44ad !important;
+  color: #ecf0f1 !important;
+}
+
+#general-lock-config .window-title,
+#joker-locker .window-title,
+#lock-configuration .window-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+}
+
+#general-lock-config input,
+#general-lock-config select,
+#general-lock-config textarea,
+#joker-locker input,
+#joker-locker select,
+#joker-locker textarea,
+#lock-configuration input,
+#lock-configuration select,
+#lock-configuration textarea {
+  border: 1px solid #27ae60 !important;
+  background-color: #d8d8d8 !important;
+  color: #000000 !important;
+  font-family: "Courier New", Courier, monospace !important;
+}
+
+#general-lock-config button,
+#joker-locker button,
+#lock-configuration button {
+  background: #8e44ad !important;
+  color: #fff !important;
+  border: 1px solid #6c3483 !important;
+  text-transform: uppercase;
+}
