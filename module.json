@@ -59,6 +59,15 @@
         }
     ],
     "packs": [],
+    "relationships": {
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+    },
     "url": "https://github.com/bernardoclon/jocker-loker",
     "manifest": "https://raw.githubusercontent.com/bernardoclon/joker-locker/refs/heads/main/module.json",
     "download": "https://github.com/bernardoclon/joker-locker/archive/refs/tags/V1-5.zip",
