@@ -1,160 +1,165 @@
 <form action="submit">
 
     {{#if showPermissionWarning}}
-
     <p class="notification warning">
         {{localize "joker-locker.general-lock-config.permissionWarning"}}
         <br>
-        <a style="text-decoration: underline;" id="fix-ownership"><i class="fa-solid fa-wrench"></i> {{localize
-            "joker-locker.general-lock-config.fixPermission"}}</a>
+        <a id="fix-ownership"><i class="fa-solid fa-wrench"></i> {{localize "joker-locker.general-lock-config.fixPermission"}}</a>
     </p>
-
-
     {{/if}}
 
-    <div class="form-group">
-        <label for="lockType">{{localize "joker-locker.general-lock-config.lockType.label"}}</label>
-        <div class="form-fields">
-            <select name="lockType" value="{{lockType}}">
-                <option value="none">{{localize "joker-locker.general-lock-config.lockType.none"}}</option>
-                //requires context optgroup
-                <optgroup label="{{localize "joker-locker.general-lock-config.lockType.optgroupContext"}}">
-                {{selectOptions contextLocks selected=lockType localize=true}}
-                </optgroup>
-                <optgroup label="{{localize "joker-locker.general-lock-config.lockType.optgroupNoContext"}}">
-                {{selectOptions noContextLocks selected=lockType localize=true}}
-                </optgroup>
-            </select>
-            <button type="button" id="configure-lock" style="white-space: nowrap;"><i class="fa-solid fa-puzzle"></i>
-                {{localize "joker-locker.general-lock-config.lockType.configure"}}</button>
+    <nav class="sheet-tabs tabs">
+        <a class="item active" data-tab="general"><i class="fas fa-cogs"></i> {{localize "General"}}</a>
+        <a class="item" data-tab="appearance"><i class="fas fa-paint-brush"></i> {{localize "Apariencia"}}</a>
+        <a class="item" data-tab="soundsActions"><i class="fas fa-volume-up"></i> {{localize "Sonidos y Acciones"}}</a>
+    </nav>
+
+    <section class="content">
+        <div class="tab active" data-tab="general">
+            <div class="form-group">
+                <label for="lockType">{{localize "joker-locker.general-lock-config.lockType.label"}}</label>
+                <div class="form-fields">
+                    <select name="lockType" value="{{lockType}}">
+                        <option value="none">{{localize "joker-locker.general-lock-config.lockType.none"}}</option>
+                        <optgroup label="{{localize "joker-locker.general-lock-config.lockType.optgroupContext"}}">
+                        {{selectOptions contextLocks selected=lockType localize=true}}
+                        </optgroup>
+                        <optgroup label="{{localize "joker-locker.general-lock-config.lockType.optgroupNoContext"}}">
+                        {{selectOptions noContextLocks selected=lockType localize=true}}
+                        </optgroup>
+                    </select>
+                    <button type="button" id="configure-lock"><i class="fa-solid fa-puzzle"></i>
+                        {{localize "joker-locker.general-lock-config.lockType.configure"}}</button>
+                </div>
+                <p class="notes">{{localize "joker-locker.general-lock-config.lockType.notes"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label for="label">{{localize "joker-locker.general-lock-config.label.label"}}</label>
+                <div class="form-fields">
+                    <input type="text" name="label" placeholder="{{localize "joker-locker.general-lock-config.label.placeholder"}}" value="{{label}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">{{localize "joker-locker.general-lock-config.description.label"}}</label>
+                <div class="form-fields">
+                    <textarea rows="3" name="description" placeholder="">{{description}}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="unlocked">{{localize "joker-locker.general-lock-config.unlocked.label"}}</label>
+                <div class="form-fields">
+                    <input type="checkbox" name="unlocked" {{#if unlocked}}checked{{/if}}>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="attempts">{{localize "joker-locker.general-lock-config.attempts.label"}}</label>
+                <div class="form-fields">
+                    <input type="number" value="{{attempts}}" step="1" name="attempts" min="-1">
+                </div>
+                <p class="notes">{{localize "joker-locker.general-lock-config.attempts.notes"}}</p>
+            </div>
         </div>
-        <p class="notes">{{localize "joker-locker.general-lock-config.lockType.notes"}}</p>
-    </div>
 
-    <div class="form-group">
-        <label for="label">{{localize "joker-locker.general-lock-config.label.label"}}</label>
-        <div class="form-fields">
-            <input type="text" name="label" placeholder="{{localize "joker-locker.general-lock-config.label.placeholder"}}" value="{{label}}">
+        <div class="tab" data-tab="appearance">
+            <div class="form-group">
+                <label for="backgroundImage">{{localize "joker-locker.general-lock-config.backgroundImage.label"}}</label>
+                <div class="form-fields">
+                    <file-picker type="image" name="backgroundImage" value="{{backgroundImage}}"></file-picker>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="glow">{{localize "joker-locker.general-lock-config.glow.label"}}</label>
+                <div class="form-fields">
+                    <input type="checkbox" name="glow" {{#if glow}}checked{{/if}}>
+                </div>
+                <p class="notes">{{localize "joker-locker.general-lock-config.glow.notes"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label for="textColor">{{localize "joker-locker.general-lock-config.textColor.label"}}</label>
+                <div class="form-fields">
+                    <color-picker name="textColor" value="{{textColor}}" default="#ffffff"></color-picker>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="primaryColor">{{localize "joker-locker.general-lock-config.primaryColor.label"}}</label>
+                <div class="form-fields">
+                    <color-picker name="primaryColor" value="{{primaryColor}}" default="#000000"></color-picker>
+                </div>
+                <p class="notes">{{localize "joker-locker.general-lock-config.primaryColor.notes"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label for="secondaryColor">{{localize "joker-locker.general-lock-config.secondaryColor.label"}}</label>
+                <div class="form-fields">
+                    <color-picker name="secondaryColor" value="{{secondaryColor}}" default="#FFFFFF"></color-picker>
+                </div>
+                <p class="notes">{{localize "joker-locker.general-lock-config.secondaryColor.notes"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label for="primaryFont">{{localize "joker-locker.general-lock-config.primaryFont.label"}}</label>
+                <div class="form-fields">
+                    <select name="primaryFont" value="{{primaryFont}}">
+                        {{selectOptions fontChoices selected=primaryFont}}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="secondaryFont">{{localize "joker-locker.general-lock-config.secondaryFont.label"}}</label>
+                <div class="form-fields">
+                    <select name="secondaryFont" value="{{secondaryFont}}">
+                        {{selectOptions fontChoices selected=secondaryFont}}
+                    </select>
+                </div>
+                <p class="notes">{{localize "joker-locker.general-lock-config.secondaryFont.notes"}}</p>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label for="description">{{localize "joker-locker.general-lock-config.description.label"}}</label>
-        <div class="form-fields">
-            <textarea rows="3" name="description" placeholder="">{{description}}</textarea>
+        <div class="tab" data-tab="soundsActions">
+            <div class="form-group">
+                <label for="unlockSound">{{localize "joker-locker.general-lock-config.unlockSound.label"}}</label>
+                <div class="form-fields">
+                    <file-picker type="audio" name="unlockSound" value="{{unlockSound}}"></file-picker>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="interactionSound">{{localize "joker-locker.general-lock-config.interactionSound.label"}}</label>
+                <div class="form-fields">
+                    <file-picker type="audio" name="interactionSound" value="{{interactionSound}}"></file-picker>
+                </div>
+            </div>
+
+            <div class="form-group stacked command">
+                <label for="unlockMacro">{{localize "joker-locker.general-lock-config.unlockMacro.label"}}</label>
+                <p class="notes">{{localize "joker-locker.general-lock-config.unlockMacro.notes"}}</p>
+                <div class="form-fields">
+                    <textarea rows="6" name="unlockMacro" placeholder="">{{unlockMacro}}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="permission">{{localize "joker-locker.general-lock-config.permission.label"}}</label>
+                <div class="form-fields">
+                    <select name="permission" value="{{permission}}">
+                        {{selectOptions permissionOptions selected=permission}}
+                    </select>
+                    <select name="userPermissions" value="{{userPermissions}}">
+                        {{selectOptions userPermissionsOptions selected=userPermissions}}
+                    </select>
+                </div>
+                <p class="notes">{{localize "joker-locker.general-lock-config.permission.notes"}}</p>
+            </div>
         </div>
-    </div>
-
-    <div class="form-group">
-        <label for="unlocked">{{localize "joker-locker.general-lock-config.unlocked.label"}}</label>
-        <div class="form-fields">
-            <input type="checkbox" name="unlocked" {{#if unlocked}}checked{{/if}}>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="attempts">{{localize "joker-locker.general-lock-config.attempts.label"}}</label>
-        <div class="form-fields">
-            <input type="number" value="{{attempts}}" step="1" name="attempts" min="-1">
-        </div>
-        <p class="notes">{{localize "joker-locker.general-lock-config.attempts.notes"}}</p>
-    </div>
-
-    <div class="form-group">
-        <label for="unlockSound">{{localize "joker-locker.general-lock-config.unlockSound.label"}}</label>
-        <div class="form-fields">
-            <file-picker type="audio" name="unlockSound" value="{{unlockSound}}">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="interactionSound">{{localize "joker-locker.general-lock-config.interactionSound.label"}}</label>
-        <div class="form-fields">
-            <file-picker type="audio" name="interactionSound" value="{{interactionSound}}">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="backgroundImage">{{localize "joker-locker.general-lock-config.backgroundImage.label"}}</label>
-        <div class="form-fields">
-            <file-picker type="image" name="backgroundImage" value="{{backgroundImage}}">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="glow">{{localize "joker-locker.general-lock-config.glow.label"}}</label>
-        <div class="form-fields">
-            <input type="checkbox" name="glow" {{#if glow}}checked{{/if}}>
-        </div>
-        <p class="notes">{{localize "joker-locker.general-lock-config.glow.notes"}}</p>
-    </div>
-
-    <div class="form-group">
-        <label for="textColor">{{localize "joker-locker.general-lock-config.textColor.label"}}</label>
-        <div class="form-fields">
-            <color-picker name="textColor" value="{{textColor}}" default="#ffffff"></color-picker>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="primaryColor">{{localize "joker-locker.general-lock-config.primaryColor.label"}}</label>
-        <div class="form-fields">
-            <color-picker name="primaryColor" value="{{primaryColor}}" default="#000000"></color-picker>
-        </div>
-        <p class="notes">{{localize "joker-locker.general-lock-config.primaryColor.notes"}}</p>
-    </div>
-
-    <div class="form-group">
-        <label for="secondaryColor">{{localize "joker-locker.general-lock-config.secondaryColor.label"}}</label>
-        <div class="form-fields">
-            <color-picker name="secondaryColor" value="{{secondaryColor}}" default="#FFFFFF"></color-picker>
-        </div>
-        <p class="notes">{{localize "joker-locker.general-lock-config.secondaryColor.notes"}}</p>
-    </div>
-
-
-    <div class="form-group">
-        <label for="primaryFont">{{localize "joker-locker.general-lock-config.primaryFont.label"}}</label>
-        <div class="form-fields">
-            <select name="primaryFont" value="{{primaryFont}}">
-                {{selectOptions fontChoices selected=primaryFont}}
-            </select>
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <label for="secondaryFont">{{localize "joker-locker.general-lock-config.secondaryFont.label"}}</label>
-        <div class="form-fields">
-            <select name="secondaryFont" value="{{secondaryFont}}">
-                {{selectOptions fontChoices selected=secondaryFont}}
-            </select>
-        </div>
-        <p class="notes">{{localize "joker-locker.general-lock-config.secondaryFont.notes"}}</p>
-    </div>
-
-    <div class="form-group stacked command">
-        <label for="unlockMacro">{{localize "joker-locker.general-lock-config.unlockMacro.label"}}</label>
-        <p class="notes">{{localize "joker-locker.general-lock-config.unlockMacro.notes"}}</p>
-        <div class="form-fields">
-            <textarea rows="6" name="unlockMacro" placeholder="">{{unlockMacro}}</textarea>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="permission">{{localize "joker-locker.general-lock-config.permission.label"}}</label>
-        <div class="form-fields">
-            <select name="permission" value="{{permission}}">
-                {{selectOptions permissionOptions selected=permission}}
-            </select>
-            <select name="userPermissions" value="{{userPermissions}}">
-                {{selectOptions userPermissionsOptions selected=userPermissions}}
-            </select>
-        </div>
-        <p class="notes">{{localize "joker-locker.general-lock-config.permission.notes"}}</p>
-    </div>
-
-
+    </section>
 
     <footer>
         <button type="submit"><i class="far fa-save"></i> {{localize "Save"}}</button>

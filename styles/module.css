@@ -1371,3 +1371,70 @@
   border: 1px solid #6c3483 !important;
   text-transform: uppercase;
 }
+
+/* Rediseño de Configuración General de Bloqueo */
+#general-lock-config .sheet-tabs {
+    margin: 0;
+    border-bottom: 1px solid #8e44ad;
+}
+
+#general-lock-config .sheet-tabs .item {
+    border-radius: 5px 5px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    color: #000000;
+}
+
+#general-lock-config .sheet-tabs .item.active {
+    border-color: #8e44ad;
+    text-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+    box-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+}
+
+#general-lock-config .tab {
+    padding: 10px 5px;
+}
+
+#general-lock-config .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(142, 68, 173, 0.25);
+}
+
+#general-lock-config .form-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#general-lock-config .form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1em;
+    color: #8e44ad;
+    text-shadow: 0 0 3px rgba(142, 68, 173, 0.5);
+    width: 100%;
+}
+
+#general-lock-config .form-fields {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+}
+
+#general-lock-config .form-fields > *:not(button):not(input[type="checkbox"]) {
+    flex-grow: 1;
+}
+
+#general-lock-config #fix-ownership {
+    text-decoration: underline;
+}
+
+#general-lock-config #configure-lock {
+    white-space: nowrap;
+}

@@ -176,4 +176,16 @@ Hooks.on("init", () => {
 
     initConfig();
     registerSettings();
+
+    Hooks.on("renderApplication", (app, html, data) => {
+        if (app.id === "general-lock-config") {
+            const tabs = new Tabs({
+                navSelector: ".sheet-tabs",
+                contentSelector: ".content",
+                initial: "general",
+                callback: () => {}
+            });
+            tabs.bind(html[0]);
+        }
+    });
 });
