@@ -1438,3 +1438,23 @@
 #general-lock-config #configure-lock {
     white-space: nowrap;
 }
+
+#general-lock-config .form-group:has(input[type="checkbox"]) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#general-lock-config .form-group:has(input[type="checkbox"]) label {
+    width: auto;
+    margin-bottom: 0;
+}
+
+#general-lock-config .form-group:has(input[type="checkbox"]) .form-fields {
+    width: auto;
+}
+
+#general-lock-config .form-group:has(input[type="checkbox"]) .notes {
+    flex-basis: 100%;
+}
